@@ -1,6 +1,6 @@
 - type: entity
-  name: blood cult pinpointer
-  description: A sinister tracking device that points towards cult targets. Only cultists can use this device.
+  name: Blood Locator
+  description: A sinister looking pinpointer with a strange crystal lodged into it. It points towards cult targets. Only cultists know about this device and how to use it, for others it's a strange piece of junk.
   id: BloodCultPinpointer
   parent: PinpointerBase
   components:
@@ -34,5 +34,3 @@
     targetName: cult target
     updateTargetName: true
     canRetarget: false
-  - type: Contraband
-    contrabandType: BloodCult
