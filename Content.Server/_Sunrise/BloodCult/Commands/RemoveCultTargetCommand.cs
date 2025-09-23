@@ -1,9 +1,8 @@
 using Content.Server._Sunrise.BloodCult.GameRule;
 using Content.Server.Administration;
-using Content.Shared._Sunrise.BloodCult.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Robust.Shared.IoC;
+using Robust.Shared.Localization;
 
 namespace Content.Server._Sunrise.BloodCult.Commands;
 
@@ -13,23 +12,23 @@ public sealed class RemoveCultTargetCommand : IConsoleCommand
     [Dependency] private readonly IEntityManager _entManager = default!;
 
     public string Command => "bloodcult_removetarget";
-    public string Description => "Remove a target from the Blood cult";
-    public string Help => "Usage: bloodcult_removetarget <ckey>";
+    public string Description => Loc.GetString("bloodcult-removetarget-description");
+    public string Help => Loc.GetString("bloodcult-removetarget-help");
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (args.Length != 1)
         {
-            shell.WriteError("Usage: bloodcult_removetarget <ckey>");
+            shell.WriteError(Loc.GetString("bloodcult-removetarget-usage"));
             return;
         }
 
         var ckey = args[0];
         var playerManager = IoCManager.Resolve<Robust.Server.Player.IPlayerManager>();
-        
+
         if (!playerManager.TryGetSessionByUsername(ckey, out var session) || session.AttachedEntity == null)
         {
-            shell.WriteError($"Player with ckey '{ckey}' not found or not in game.");
+            shell.WriteError(Loc.GetString("bloodcult-removetarget-player-not-found", ("ckey", ckey)));
             return;
         }
 
@@ -37,24 +36,24 @@ public sealed class RemoveCultTargetCommand : IConsoleCommand
 
         if (!_entManager.EntitySysManager.TryGetEntitySystem<BloodCultRuleSystem>(out var cultRuleSystem))
         {
-            shell.WriteError("Blood cult system not found.");
+            shell.WriteError(Loc.GetString("bloodcult-removetarget-system-not-found"));
             return;
         }
 
         var rule = cultRuleSystem.GetRule();
         if (rule == null)
         {
-            shell.WriteError("No active Blood cult rule found.");
+            shell.WriteError(Loc.GetString("bloodcult-removetarget-rule-not-found"));
             return;
         }
 
         // Use the system method to remove target properly
         if (!cultRuleSystem.RemoveSpecificCultTarget(entityUid, rule))
         {
-            shell.WriteError("Entity is not a cult target.");
+            shell.WriteError(Loc.GetString("bloodcult-removetarget-not-target"));
             return;
         }
 
-        shell.WriteLine($"Removed {_entManager.GetComponent<MetaDataComponent>(entityUid).EntityName} as a cult target.");
+        shell.WriteLine(Loc.GetString("bloodcult-removetarget-success", ("name", _entManager.GetComponent<MetaDataComponent>(entityUid).EntityName)));
     }
 }
