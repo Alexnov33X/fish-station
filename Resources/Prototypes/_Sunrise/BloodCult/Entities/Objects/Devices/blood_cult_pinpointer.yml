@@ -5,8 +5,9 @@
   parent: PinpointerBase
   components:
   - type: Sprite
+    sprite: _Sunrise/BloodCult/pinpointer.rsi
     layers:
-    - state: pinpointer-syndicate
+    - state: pinpointer_bloodcult
       map: ["enum.PinpointerLayers.Base"]
     - state: pinonnull
       map: ["enum.PinpointerLayers.Screen"]
@@ -27,7 +28,7 @@
         color: "#8b0000"
       - state: inhand-right-top
   - type: Icon
-    state: pinpointer-syndicate
+    state: pinpointer_bloodcult
   - type: Pinpointer
     component: BloodCultTarget
     targetName: cult target

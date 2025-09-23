@@ -3,6 +3,7 @@ using Content.Server.Administration;
 using Content.Shared._Sunrise.BloodCult.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
+using Robust.Shared.IoC;
 
 namespace Content.Server._Sunrise.BloodCult.Commands;
 
@@ -13,21 +14,26 @@ public sealed class AddCultTargetCommand : IConsoleCommand
 
     public string Command => "bloodcult_addtarget";
     public string Description => "Add a target to the Blood cult";
-    public string Help => "Usage: bloodcult_addtarget <entityUid>";
+    public string Help => "Usage: bloodcult_addtarget <ckey>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (args.Length != 1)
         {
-            shell.WriteError("Usage: bloodcult_addtarget <entityUid>");
+            shell.WriteError("Usage: bloodcult_addtarget <ckey>");
             return;
         }
 
-        if (!NetEntity.TryParse(args[0], out var entityUidNet) || !_entManager.TryGetEntity(entityUidNet, out var entityUid))
+        var ckey = args[0];
+        var playerManager = IoCManager.Resolve<Robust.Server.Player.IPlayerManager>();
+        
+        if (!playerManager.TryGetSessionByUsername(ckey, out var session) || session.AttachedEntity == null)
         {
-            shell.WriteError("Invalid entity UID.");
+            shell.WriteError($"Player with ckey '{ckey}' not found or not in game.");
             return;
         }
+
+        var entityUid = session.AttachedEntity.Value;
 
         if (!_entManager.EntitySysManager.TryGetEntitySystem<BloodCultRuleSystem>(out var cultRuleSystem))
         {
@@ -43,12 +49,12 @@ public sealed class AddCultTargetCommand : IConsoleCommand
         }
 
         // Use the system method to add target properly
-        if (!cultRuleSystem.AddSpecificCultTarget(entityUid.Value, rule))
+        if (!cultRuleSystem.AddSpecificCultTarget(entityUid, rule))
         {
             shell.WriteError("Entity is already a cult target.");
             return;
         }
 
-        shell.WriteLine($"Added {_entManager.GetComponent<MetaDataComponent>(entityUid.Value).EntityName} as a cult target.");
+        shell.WriteLine($"Added {_entManager.GetComponent<MetaDataComponent>(entityUid).EntityName} as a cult target.");
     }
 }
