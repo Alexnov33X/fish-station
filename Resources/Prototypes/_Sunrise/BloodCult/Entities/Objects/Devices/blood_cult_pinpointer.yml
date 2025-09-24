@@ -1,6 +1,6 @@
 - type: entity
-  name: blood cult pinpointer
-  description: A sinister tracking device that points towards cult targets. Only cultists can use this device.
+  name: ent-BloodCultPinpointer
+  description: ent-BloodCultPinpointer-desc
   id: BloodCultPinpointer
   parent: PinpointerBase
   components:
@@ -34,5 +34,3 @@
     targetName: cult target
     updateTargetName: true
     canRetarget: false
-  - type: Contraband
-    contrabandType: BloodCult
