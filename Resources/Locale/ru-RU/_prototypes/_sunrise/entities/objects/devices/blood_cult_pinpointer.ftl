@@ -1,2 +1,2 @@
-ent-BloodCultPinpointer = blood-locator-name
-    .desc = blood-locator-description
+ent-BloodCultPinpointer = Кровеуказатель
+    .desc = Зловещий указатель со странным кристаллом, встроенным в него. Он указывает на цели культа. Только культисты знают об этом устройстве и как его использовать, для остальных это странный хлам.
