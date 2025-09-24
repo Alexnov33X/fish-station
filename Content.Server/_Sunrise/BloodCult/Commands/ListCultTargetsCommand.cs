@@ -2,6 +2,7 @@ using Content.Server._Sunrise.BloodCult.GameRule;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
+using Robust.Shared.Localization;
 
 namespace Content.Server._Sunrise.BloodCult.Commands;
 
@@ -11,30 +12,30 @@ public sealed class ListCultTargetsCommand : IConsoleCommand
     [Dependency] private readonly IEntityManager _entManager = default!;
 
     public string Command => "bloodcult_listtargets";
-    public string Description => "List all current Blood cult targets";
-    public string Help => "Usage: bloodcult_listtargets";
+    public string Description => Loc.GetString("bloodcult-listtargets-description");
+    public string Help => Loc.GetString("bloodcult-listtargets-help");
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
         if (!_entManager.EntitySysManager.TryGetEntitySystem<BloodCultRuleSystem>(out var cultRuleSystem))
         {
-            shell.WriteError("Blood cult system not found.");
+            shell.WriteError(Loc.GetString("bloodcult-listtargets-system-not-found"));
             return;
         }
 
         var rule = cultRuleSystem.GetRule();
         if (rule?.CultTargets == null || rule.CultTargets.Count == 0)
         {
-            shell.WriteLine("No cult targets found.");
+            shell.WriteLine(Loc.GetString("bloodcult-listtargets-no-targets"));
             return;
         }
 
-        shell.WriteLine($"Current cult targets ({rule.CultTargets.Count}):");
+        shell.WriteLine(Loc.GetString("bloodcult-listtargets-header", ("count", rule.CultTargets.Count)));
         foreach (var (target, isSacrificed) in rule.CultTargets)
         {
             var targetName = _entManager.GetComponent<MetaDataComponent>(target).EntityName;
-            var status = isSacrificed ? "Sacrificed" : "Alive";
-            shell.WriteLine($"  {targetName} ({target}) - {status}");
+            var status = isSacrificed ? Loc.GetString("bloodcult-listtargets-sacrificed") : Loc.GetString("bloodcult-listtargets-alive");
+            shell.WriteLine(Loc.GetString("bloodcult-listtargets-target", ("name", targetName), ("uid", target), ("status", status)));
         }
     }
 }
