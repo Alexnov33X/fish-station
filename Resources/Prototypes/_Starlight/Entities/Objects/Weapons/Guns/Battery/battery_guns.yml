@@ -90,7 +90,6 @@
     - proto: TaserBoltSunrise #fish-edit
       fireCost: 200
       magState: stun
-      name: energy-gun-mode-stun #fish-edit
       conditions:
       - !type:AlertLevelCondition
         alertLevels:
@@ -100,7 +99,7 @@
         - red
         - gamma
     - proto: RedLaserBeam
-      fireCost: 250
+      fireCost: 200
       magState: lethal
       conditions:
       - !type:AlertLevelCondition
