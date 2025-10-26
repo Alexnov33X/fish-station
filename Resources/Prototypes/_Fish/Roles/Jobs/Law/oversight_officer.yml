@@ -16,7 +16,8 @@
       time: 18000 # 5 hrs
   startingGear: OversightOfficerGear
   icon: JobIconOversightOfficer
-  overrideConsoleVisibility: false # Sunrise added
+  setPreference: true # fish-edit
+  overrideConsoleVisibility: true # fish-edit
   supervisors: job-supervisors-oversightdep
   radioBold: true
   canBeAntag: false
