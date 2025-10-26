@@ -1124,7 +1124,7 @@
       state: spark
       shader: unshaded
     color: "#ffff33"
-  staminaDamage: 50 #fish-edit
+  staminaDamage: 40 #fish-edit
   maxLength: 5.2 #fish-edit
   damage:
     types:
