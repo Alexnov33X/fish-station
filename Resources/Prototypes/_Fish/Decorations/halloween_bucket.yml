@@ -1,22 +1,40 @@
 - type: entity
   id: HalloweenBucket
   name: halloween bucket
-  parent: BaseItem
+  parent: BaseStorageItem
   description: A spooky bucket for collecting treats during Halloween.
   components:
     - type: Sprite
       sprite: _Fish/Decorations/halloween_bucket.rsi
-      state: icon
-    - type: Item #TODO regulate size + add full state
+      layers:
+      - state: icon
+        map: ["enum.StorageVisualLayers.Base"]
+      - state: icon-full
+        map: ["enum.StorageVisualLayers.Base"]
+    - type: Item # 2x2 tile footprint
+      size: Large
+      shape:
+        - 0,0,2,2
     - type: Tag
       tags:
         - Halloween
     - type: Storage
+      grid:
+        - 0,0,3,3
+      whitelist:
+        tags:
+          - Brain #todo replace with candy tag when candies are added
     - type: ItemSlots
       slots:
         hand:
           name: Hand
           priority: 0
+    - type: GenericVisualizer
+      visuals:
+        enum.StorageVisuals.HasContents:
+          enum.StorageVisualLayers.Base:
+            False: { state: icon }
+            True: { state: icon-full }
     # Handheld visuals are provided by the RSI states (inhand-left/inhand-right) and the
     # engine will use them when the item is held. No special HandheldItem component
     # exists in this codebase, so we rely on the standard Sprite/Item configuration.

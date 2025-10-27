@@ -4,10 +4,13 @@
   name: halloween tree 1
   description: A spooky Halloween tree.
   components:
-    - type:
+    - type: Sprite
       sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree1
+      offset: 0, 0.4
+      drawdepth: FloorObjects
     - type: Physics
+      bodyType: Static
     - type: Tag
       tags:
         - Halloween
