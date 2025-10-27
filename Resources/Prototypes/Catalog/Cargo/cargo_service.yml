@@ -21,7 +21,7 @@
 - type: cargoProduct
   id: ServiceLightsReplacement
   icon:
-    sprite: Objects/Power/light_bulb.rsi
+    sprite: _Fish/Lights/gothic_bulb.rsi
     state: normal
   product: CrateServiceReplacementLights
   cost: 600
@@ -31,7 +31,7 @@
 - type: cargoProduct
   id: ServiceLightsHoliday
   icon:
-    sprite: Objects/Power/light_bulb.rsi
+    sprite: _Fish/Lights/gothic_bulb.rsi
     state: normal
   product: CrateServiceHolidayLights
   cost: 800
@@ -41,7 +41,7 @@
 - type: cargoProduct
   id: ServiceLightsColorful
   icon:
-    sprite: Objects/Power/light_bulb.rsi
+    sprite: _Fish/Lights/gothic_bulb.rsi
     state: normal
   product: CrateServiceColorfulLights
   cost: 800

@@ -10,14 +10,11 @@
     - type: Item
       size: 10 # 2x2 size (5 units per tile)
       sprite: _Fish/Decorations/halloween_bucket
-    - type: ItemCooldown
-    - type: StaticPrice
-      price: 100
     - type: Tag
       tags:
         - Halloween
     - type: Storage
-      capacity: 30 # Space for treats
+      capacity: 10 # Space for treats
     - type: ItemSlots
       slots:
         hand:
