@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created for Fish Station by Alexnov33X",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tree1",
+            "directions": 1
+        },
+        {
+            "name": "tree2",
+            "directions": 1
+        },
+        {
+            "name": "tree3",
+            "directions": 1
+        },
+        {
+            "name": "tree4",
+            "directions": 1
+        },
+        {
+            "name": "tree5",
+            "directions": 1
+        },
+        {
+            "name": "tree6",
+            "directions": 1
+        },
+        {
+            "name": "tree7",
+            "directions": 1
+        },
+        {
+            "name": "tree8",
+            "directions": 1
+        },
+        {
+            "name": "tree9",
+            "directions": 1
+        },
+        {
+            "name": "tree10",
+            "directions": 1
+        }
+    ]
+}

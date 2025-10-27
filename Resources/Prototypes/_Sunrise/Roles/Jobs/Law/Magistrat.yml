@@ -7,11 +7,17 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 108000 #30 hrs
+    - !type:DepartmentTimeRequirement
+      department: Law
+      time: 108000 #30 hrs
   startingGear: MagistratGear
   icon: "JobIconMagistrat"
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  setPreference: false
+  setPreference: true
+  startingGear: SpecOpsOfficerGear
+  icon: "JobIconSpecOpsOfficer"
+  overrideConsoleVisibility: false # Sunrise added
   radioBold: true
   displayWeight: 75
   access:

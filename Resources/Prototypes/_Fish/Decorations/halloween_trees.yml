@@ -1,0 +1,104 @@
+- type: entity
+  id: HalloweenTree1
+  parent: BaseStructure
+  name: halloween tree 1
+  description: A spooky Halloween tree.
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree1
+    - type: Physics
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.35
+          density: 190
+          mask:
+          - FullTileMask
+          layer:
+          - AirlockLayer
+    - type: Transform
+      anchored: true
+
+- type: entity
+  id: HalloweenTree2
+  parent: HalloweenTree1
+  name: halloween tree 2
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree2
+
+- type: entity
+  id: HalloweenTree3
+  parent: HalloweenTree1
+  name: halloween tree 3
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree3
+
+- type: entity
+  id: HalloweenTree4
+  parent: HalloweenTree1
+  name: halloween tree 4
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree4
+
+- type: entity
+  id: HalloweenTree5
+  parent: HalloweenTree1
+  name: halloween tree 5
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree5
+
+- type: entity
+  id: HalloweenTree6
+  parent: HalloweenTree1
+  name: halloween tree 6
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree6
+
+- type: entity
+  id: HalloweenTree7
+  parent: HalloweenTree1
+  name: halloween tree 7
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree7
+
+- type: entity
+  id: HalloweenTree8
+  parent: HalloweenTree1
+  name: halloween tree 8
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree8
+
+- type: entity
+  id: HalloweenTree9
+  parent: HalloweenTree1
+  name: halloween tree 9
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree9
+
+- type: entity
+  id: HalloweenTree10
+  parent: HalloweenTree1
+  name: halloween tree 10
+  components:
+    - type: Sprite
+      sprite: _Fish/Decorations/halloween_trees
+      state: tree10
