@@ -4,10 +4,13 @@
   name: halloween tree 1
   description: A spooky Halloween tree.
   components:
-    - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+    - type:
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree1
     - type: Physics
+    - type: Tag
+      tags:
+        - Halloween
     - type: Fixtures
       fixtures:
         fix1:
@@ -28,7 +31,7 @@
   name: halloween tree 2
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree2
 
 - type: entity
@@ -37,7 +40,7 @@
   name: halloween tree 3
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree3
 
 - type: entity
@@ -46,7 +49,7 @@
   name: halloween tree 4
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree4
 
 - type: entity
@@ -55,7 +58,7 @@
   name: halloween tree 5
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree5
 
 - type: entity
@@ -64,7 +67,7 @@
   name: halloween tree 6
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree6
 
 - type: entity
@@ -73,7 +76,7 @@
   name: halloween tree 7
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree7
 
 - type: entity
@@ -82,7 +85,7 @@
   name: halloween tree 8
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree8
 
 - type: entity
@@ -91,7 +94,7 @@
   name: halloween tree 9
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree9
 
 - type: entity
@@ -100,5 +103,5 @@
   name: halloween tree 10
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_trees
+      sprite: _Fish/Decorations/halloween_trees.rsi
       state: tree10

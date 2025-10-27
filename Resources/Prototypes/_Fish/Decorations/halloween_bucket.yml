@@ -5,26 +5,18 @@
   description: A spooky bucket for collecting treats during Halloween.
   components:
     - type: Sprite
-      sprite: _Fish/Decorations/halloween_bucket
+      sprite: _Fish/Decorations/halloween_bucket.rsi
       state: icon
-    - type: Item
-      size: 10 # 2x2 size (5 units per tile)
-      sprite: _Fish/Decorations/halloween_bucket
+    - type: Item #TODO regulate size + add full state
     - type: Tag
       tags:
         - Halloween
     - type: Storage
-      capacity: 10 # Space for treats
     - type: ItemSlots
       slots:
         hand:
           name: Hand
           priority: 0
-    - type: HandheldItem
-      sprite: _Fish/Decorations/halloween_bucket
-      leftHandSprite:
-        sprite: _Fish/Decorations/halloween_bucket
-        state: inhand-left
-      rightHandSprite:
-        sprite: _Fish/Decorations/halloween_bucket
-        state: inhand-right
+    # Handheld visuals are provided by the RSI states (inhand-left/inhand-right) and the
+    # engine will use them when the item is held. No special HandheldItem component
+    # exists in this codebase, so we rely on the standard Sprite/Item configuration.

@@ -1,6 +1,4 @@
-ent-HalloweenBucket = halloween bucket
-    .desc = A spooky bucket for collecting treats during Halloween.
-    .suffix = Halloween
+## Halloween message file (keep generic holiday strings here). Entity names live under prototypes/decorations.ftl
 
 ent-HalloweenTree1 = halloween tree 1
     .desc = A spooky Halloween tree.
