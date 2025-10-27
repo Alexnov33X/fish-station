@@ -4,10 +4,10 @@
   description: job-description-magistrat
   playTimeTracker: JobMagistrat
   requirements:
-    - !type:DepartmentTimeRequirement # fish-edit
+    - !type:DepartmentTimeRequirement
       department: Command
       time: 108000 #30 hrs
-    - !type:DepartmentTimeRequirement
+    - !type:DepartmentTimeRequirement # fish-edit
       department: Law
       time: 108000 #30 hrs
   startingGear: MagistratGear

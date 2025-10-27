@@ -5,6 +5,7 @@
   color: "#FF5297"
   weight: 80
   roles:
+    - OversightOfficer
     - Magistrat
     - IAA
     - Lawyer
