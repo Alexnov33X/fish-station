@@ -6,7 +6,7 @@
   parent: BaseStructure
   components:
   - type: Sprite
-    sprite: Structures/Lighting/LightPosts/halloween_post.rsi
+    sprite: Structures/Lighting/LightPosts/small_light_post.rsi
     snapCardinals: true
     drawdepth: Objects
     noRot: true
@@ -75,7 +75,7 @@
   parent: LightPostSmall
   components:
   - type: Sprite
-    sprite: Structures/Lighting/LightPosts/halloween_post.rsi
+    sprite: Structures/Lighting/LightPosts/small_light_post.rsi
     state: empty
   - type: PointLight
     enabled: false

@@ -27,7 +27,7 @@
     graph: LightFixture
     node: tubeLight
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/gothic_tube.rsi
+    sprite: _Fish/Lights/gothic_bulb.rsi
     drawdepth: WallMountedItems
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
@@ -101,7 +101,7 @@
   parent: AlwaysPoweredWallLight
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/gothic_tube.rsi
+    sprite: _Fish/Lights/gothic_tube.rsi
     state: empty
   - type: PointLight
     enabled: false
