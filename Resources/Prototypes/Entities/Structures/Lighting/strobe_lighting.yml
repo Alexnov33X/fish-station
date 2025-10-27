@@ -21,7 +21,7 @@
     graph: LightFixture
     node: bulbLight
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/strobe_light.rsi
+    sprite: Structures/Wallmounts/Lighting/halloween_strobe.rsi
     drawdepth: WallMountedItems
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
