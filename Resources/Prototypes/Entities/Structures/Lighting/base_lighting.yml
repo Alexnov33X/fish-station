@@ -264,7 +264,7 @@
       sound:
         path: /Audio/Ambience/Objects/light_hum.ogg
     - type: Sprite
-      sprite: Structures/Wallmounts/Lighting/light_small.rsi
+      sprite: _Fish/Lights/gothic_bulb.rsi
       state: base
     - type: PointLight
       energy: 1.0
@@ -325,7 +325,7 @@
   parent: SmallLight
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/light_small.rsi
+    sprite: _Fish/Lights/gothic_bulb.rsi
     state: empty
   - type: AmbientSound
     enabled: false
