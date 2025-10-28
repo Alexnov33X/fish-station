@@ -8,43 +8,43 @@
     },
     "states": [
         {
-            "name": "tree1",
+            "name": "tree-1",
             "directions": 1
         },
         {
-            "name": "tree2",
+            "name": "tree-2",
             "directions": 1
         },
         {
-            "name": "tree3",
+            "name": "tree-3",
             "directions": 1
         },
         {
-            "name": "tree4",
+            "name": "tree-4",
             "directions": 1
         },
         {
-            "name": "tree5",
+            "name": "tree-5",
             "directions": 1
         },
         {
-            "name": "tree6",
+            "name": "tree-6",
             "directions": 1
         },
         {
-            "name": "tree7",
+            "name": "tree-7",
             "directions": 1
         },
         {
-            "name": "tree8",
+            "name": "tree-8",
             "directions": 1
         },
         {
-            "name": "tree9",
+            "name": "tree-9",
             "directions": 1
         },
         {
-            "name": "tree10",
+            "name": "tree-10",
             "directions": 1
         }
     ]
