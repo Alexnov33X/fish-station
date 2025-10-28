@@ -9,8 +9,9 @@
       layers:
       - state: icon
         map: ["enum.StorageVisualLayers.Base"]
-      - state: icon-full
-        map: ["enum.StorageVisualLayers.Base"]
+      # Only define the Base layer once; the GenericVisualizer toggles its state
+      # between `icon` and `icon-full` at runtime. Defining the same map key
+      # twice causes a duplicate layer map key error.
     - type: Item # 2x2 tile footprint
       size: Large
       shape:

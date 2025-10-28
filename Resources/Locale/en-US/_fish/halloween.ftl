@@ -1,41 +1,41 @@
 ## Halloween message file (keep generic holiday strings here). Entity names live under prototypes/decorations.ftl
 
-ent-HalloweenTree1 = halloween tree 1
+ent-HalloweenTree1 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree2 = halloween tree 2
+ent-HalloweenTree2 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree3 = halloween tree 3
+ent-HalloweenTree3 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree4 = halloween tree 4
+ent-HalloweenTree4 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree5 = halloween tree 5
+ent-HalloweenTree5 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree6 = halloween tree 6
+ent-HalloweenTree6 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree7 = halloween tree 7
+ent-HalloweenTree7 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree8 = halloween tree 8
+ent-HalloweenTree8 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree9 = halloween tree 9
+ent-HalloweenTree9 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween
 
-ent-HalloweenTree10 = halloween tree 10
+ent-HalloweenTree10 = Halloween Tree
     .desc = A spooky Halloween tree.
     .suffix = Halloween

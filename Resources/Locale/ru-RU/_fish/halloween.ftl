@@ -1,41 +1,41 @@
 ## Файл Хэллоуина — общие строки для праздника. Именования сущностей определены в prototypes/decorations.ftl
 
-ent-HalloweenTree1 = жуткое дерево 1
+ent-HalloweenTree1 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree2 = жуткое дерево 2
+ent-HalloweenTree2 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree3 = жуткое дерево 3
+ent-HalloweenTree3 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree4 = жуткое дерево 4
+ent-HalloweenTree4 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree5 = жуткое дерево 5
+ent-HalloweenTree5 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree6 = жуткое дерево 6
+ent-HalloweenTree6 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree7 = жуткое дерево 7
+ent-HalloweenTree7 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree8 = жуткое дерево 8
+ent-HalloweenTree8 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree9 = жуткое дерево 9
+ent-HalloweenTree9 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
 
-ent-HalloweenTree10 = жуткое дерево 10
+ent-HalloweenTree10 = Жуткое дерево
     .desc = Жуткое дерево Хэллоуина.
     .suffix = Хэллоуин
