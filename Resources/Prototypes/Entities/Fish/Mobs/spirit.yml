@@ -22,11 +22,9 @@
       voice: enigma
     - type: Item
       sprite: Mobs/Ghosts/spirit.rsi
-      size: Large
+      size: Normal
     - type: Tag
       tags:
-        - Spirit
-        - Ghost
         - Halloween
         - SlowImmune
         - KnockdownImmune
