@@ -1,6 +1,9 @@
 - type: entity
   id: MobSpiritUnpossessed
   name: Spirit (Halloween)
+  parent:
+  - Incorporeal
+  - BaseMob
   description: "A mysterious spirit, echoing with the voice of Halloween."
   components:
     - type: Sprite
@@ -11,28 +14,41 @@
       states:
         - Alive
         - Dead
-    - type: GhostMovement
-      canPassWalls: true
     - type: MeleeWeapon
       damage:
         types:
           Blunt: 2
-    - type: TTSVoice
+    - type: TTS
       voice: enigma
-    - type: DeathSpawn
-      spawn:
-        MobSpiritEctoplasm:
-          min: 1
-          max: 1
-    - type: Pickable
+    - type: Item
+      sprite: Mobs/Ghosts/spirit.rsi
       size: Large
     - type: Tag
       tags:
         - Spirit
         - Ghost
         - Halloween
-    - type: GuideHelp
-      guides:
-        - GhostMovement
-    # Revenant-like ghost movement and ectoplasm drop
-    # ...existing code...
+        - SlowImmune
+        - KnockdownImmune
+    - type: Spectral
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 6
+      baseSprintSpeed: 6
+    - type: Damageable
+      damageContainer: ManifestedSpirit
+      damageModifierSet: ManifestedSpirit
+    - type: NoSlip
+    - type: Eye
+      drawFov: false
+      visMask:
+        - Normal
+        - Ghost
+    - type: ContentEye
+      maxZoom: 1.2, 1.2
+    - type: Speech
+      speechVerb: Ghost
+    - type: ToggleableNightVision
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        200: Dead
