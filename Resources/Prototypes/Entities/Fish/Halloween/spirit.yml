@@ -1,0 +1,50 @@
+- type: entity
+  id: MobSpiritUnpossessed
+  parent:
+  - Incorporeal
+  - BaseMob
+  components:
+    - type: Sprite
+      sprite: Mobs/Ghosts/spirit.rsi
+      state: Alive
+      size: 2,2
+    - type: MobState
+      states:
+        - Alive
+        - Dead
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 2
+    - type: TTS
+      voice: enigma
+    - type: Item
+      sprite: Mobs/Ghosts/spirit.rsi
+      size: Normal
+    - type: Tag
+      tags:
+        - Halloween
+        - SlowImmune
+        - KnockdownImmune
+    - type: Spectral
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 6
+      baseSprintSpeed: 6
+    - type: Damageable
+      damageContainer: ManifestedSpirit
+      damageModifierSet: ManifestedSpirit
+    - type: NoSlip
+    - type: Eye
+      drawFov: false
+      visMask:
+        - Normal
+        - Ghost
+    - type: ContentEye
+      maxZoom: 1.2, 1.2
+    - type: Speech
+      speechVerb: Ghost
+    - type: ToggleableNightVision
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        200: Dead

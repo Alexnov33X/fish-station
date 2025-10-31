@@ -1,13 +1,11 @@
-# Halloween Event Entities 2025
-
-crest-halloween = Crest
+ent-CrestItem = crest
     .desc = A ceremonial crest that can be placed on walls and surfaces.
     .suffix = Halloween
 
-spirit-halloween = Spirit
+ent-MobSpiritUnpossessed = spirit
     .desc = A mysterious spirit, echoing with the voice of Halloween.
     .suffix = Halloween
 
-spirit-ectoplasm = Ectoplasm
+ent-MobSpiritEctoplasm = ectoplasm
     .desc = A ghostly residue left behind by the spirit.
     .suffix = Halloween

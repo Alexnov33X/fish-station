@@ -1,0 +1,51 @@
+- type: entity
+  id: CrestItem
+  parent: BasePlasticExplosive
+  components:
+    - type: Sprite
+      sprite: Objects/Decorations/crest.rsi
+      state: icon
+      size: 2,1
+      layers:
+      - state: icon
+        map: ["base"]
+    - type: Item
+      size: Large
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 5
+    - type: Sticky
+      stickDelay: 2
+      unstickDelay: 2
+      stickPopupStart: comp-sticky-start-stick-generic
+      stickPopupSuccess: comp-sticky-success-stick-generic
+      unstickPopupStart: comp-sticky-start-unstick-generic
+      unstickPopupSuccess: comp-sticky-success-unstick-generic
+      blacklist:
+        components:
+        - Item
+    - type: StickyVisualizer
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.Trigger.TriggerVisuals.VisualState:
+          base:
+            Primed: { state: icon }
+            Unprimed: { state: icon }
+    - type: TriggerOnActivate
+    - type: TriggerOnSignal
+    - type: TriggerOnStuck
+      keyOut: stuck
+    - type: ToggleTriggerCondition
+      keys:
+      - stuck
+      toggleVerb: toggle-trigger-condition-stick-verb
+      toggleOn: toggle-trigger-condition-stick-on
+      toggleOff: toggle-trigger-condition-stick-off
+    - type: Tag
+      tags:
+        - Halloween
+    - type: PhysicalComposition
+      materialComposition:
+        Steel: 10
