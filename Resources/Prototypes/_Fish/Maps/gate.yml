@@ -16,7 +16,7 @@
         grids:
         - gridPath: /Maps/_Fish/Shuttles/mining.yml
           priorityTag: DockMining
-        - gridPath: /Maps/_Fish/Shuttles/security.yml
+        - gridPath: /Maps/_Fish/Shuttles/security_jay.yml
           priorityTag: DockFishSecurity
       - type: StationEmergencyShuttle
         emergencyShuttlePath: /Maps/_Fish/Shuttles/emergency_gate.yml
@@ -36,7 +36,6 @@
           Librarian: [ 1, 1 ]
           ServiceWorker: [ 5, 5 ]
           Reporter: [ 2, 2 ]
-          Zookeeper: [ 1, 1 ]
           Barber: [ 1, 1 ]
           #engineering
           ChiefEngineer: [ 1, 1 ]

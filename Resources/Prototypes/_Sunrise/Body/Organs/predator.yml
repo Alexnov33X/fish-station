@@ -7,7 +7,6 @@
   - type: Sprite
     sprite: _Sunrise/Mobs/Species/Predator/organs.rsi
   - type: Organ
-  - type: Food
   - type: Extractable
     grindableSolutionName: organ
   - type: SolutionContainerManager
@@ -50,6 +49,7 @@
   - type: InputMover
   - type: Examiner
   - type: BlockMovement
+    blockInteraction: false # Fish-edit
   - type: BadFood
   - type: Tag
     tags:

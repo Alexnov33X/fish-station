@@ -52,14 +52,15 @@
     - BaseStationJobsSpawning
     # Sunrise-Start
     - BaseCentCommShuttles
-    # - BaseStationImmortal #Fish-edit
+    - BaseStationImmortal
     - BaseStationDontSelling
     - BaseStationCryoTeleport
     # Sunrise-End
   components:
     - type: Transform
-    # - type: ProtectedGrid #Fish-edit
-    # - type: UnbuildableGrid #Fish-edit
+    - type: ProtectedGrid
+    - type: UnbuildableGrid
+    - type: StationOnlyDirectSpawn # Sunrise added
 
 - type: entity
   id: StandardStationArena

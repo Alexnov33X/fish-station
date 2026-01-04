@@ -16,27 +16,11 @@
   icon: JobIconBlueShield
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  accessGroups:
+  - AllAccess
   access:
-    - Command
-    - Bar
-    - Service
-    - Maintenance
-    - Janitor
-    - Theatre
-    - Kitchen
-    - Chapel
-    - Hydroponics
-    - External
-    - Chemistry
-    - Engineering
-    - Research
-    - Salvage
-    - Cargo
-    - Atmospherics
-    - Cargo
-    - Medical
-    - BlueShield
-    - BlueShieldEnsign
+  - CentralCommand
+    # Fish-End
   special:
     - !type:AddImplantSpecial
       implants: [ MindShieldImplant ]
@@ -52,8 +36,19 @@
     ears: ClothingHeadsetBlueShieldEnsign
     belt: ClothingBeltBlueShieldWebbingFilled
     gloves: ClothingHandsGlovesCombat
-    pocket1: BaseUplinkNTERTBlueShield # fish-add
     pocket2: WeaponTaser # fish-add
   storage:
     back:
     - HandheldBSOCrewMonitor
+
+- type: chameleonOutfit
+  id: BlueShieldEnsignChameleonOutfit
+  job: BlueShieldEnsign
+  icon: JobIconBlueShield
+  equipment:
+    shoes: ClothingShoesBootsBlueShieldFilled
+    eyes: ClothingEyesGlassesBlueShield
+    head: ClothingHeadHatBeretBlueShield
+    outerClothing: ClothingOuterArmorBlueShield
+    belt: ClothingBeltBlueShieldWebbingFilled
+    gloves: ClothingHandsGlovesCombat

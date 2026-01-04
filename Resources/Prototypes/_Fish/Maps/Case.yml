@@ -18,7 +18,7 @@
         grids:
         - gridPath: /Maps/_Fish/Shuttles/mining.yml
           priorityTag: DockMining
-        - gridPath: /Maps/_Fish/Shuttles/security.yml
+        - gridPath: /Maps/_Fish/Shuttles/security_jay.yml
           priorityTag: DockFishSecurity
       - type: StationEmergencyShuttle
         emergencyShuttlePath: /Maps/_Fish/Shuttles/emergency_Case.yml
@@ -78,8 +78,6 @@
           Librarian: [ 1, 1 ]
           ServiceWorker: [ 4, 4 ]
           Reporter: [ 1, 1 ]
-          Zookeeper: [ 1, 1 ]
-          Boxer: [ 1, 1 ]
           #blueshield
           BlueShieldEnsign: [ 1, 1 ]
           BlueShieldOfficer: [ 1, 1 ]

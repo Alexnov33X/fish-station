@@ -1,5 +1,5 @@
 ent-RandomHumanoidSpawnerDeathSquad = Death Squad Agent
-    .suffix = ERTRole, Death Squad
+    .suffix = 80 TC
     .desc = { "" }
 ent-RandomHumanoidSpawnerERTLeader = ERT leader
     .suffix = ERTRole, Basic
@@ -76,6 +76,9 @@ ent-RandomHumanoidSpawnerERTJanitorVeteran = ERT janitor
     .desc = { ent-RandomHumanoidSpawnerERTJanitor.desc }
 ent-RandomHumanoidSpawnerCBURNVeteran = CBURN Agent
     .suffix = ERTRole, Veteran
+    .desc = { ent-RandomHumanoidSpawnerCBURNUnit.desc }
+ent-RandomHumanoidSpawnerCBURNUnitEVA = CBURN Agent
+    .suffix = ERTRole, Heavy
     .desc = { ent-RandomHumanoidSpawnerCBURNUnit.desc }
 ent-RandomHumanoidSpawnerERTLeaderEVAVeteran = ERT leader
     .suffix = ERTRole, Armored EVA, Veteran

@@ -12,9 +12,11 @@ job-description-roboticist = Занимайтесь созданием кибо�
 job-description-mail-carrier = Доставьте письмо адресату...любой ценой!
 job-description-head-of-prison = Управляйте лучшим местом на планете.
 job-description-planet-prisoner = Ну типа вы зек.
+job-description-prison-inspector = Фиксируйте нарушения и поддерживайте порядок в тюрьме.
 job-description-prison-chef = Готовьте еду для заключённых и персонала тюрьмы.
 job-description-prison-doctor = Лечите побитых заключённых.
 job-description-prison-engineer = Обеспечивайте функционирование тюрьмы.
+job-description-prison-scientist = Изучайте новые технологии для тюрьмы.
 job-description-prison-pilot = Доставляйте заключённых в тюрьму на своём шаттле.
 job-description-prison-worker = Выполняйте работу за которую никто не хочет браться.
 job-description-prison-guard = Следите за заключёнными.
@@ -40,4 +42,4 @@ job-description-ntrg = Вы являетесь опорой и защитой Ю
 job-description-ntrofficer = Вы являетесь опорой и защитой Юридического Департамента, выполняя решения и постановления самого Магистрата и Представителя NanoTrasen!
 job-description-miningspec = Stay station side and enrich the station with materials using your salvage magnet and ore processors
 job-description-commaid = Специально подготовленная горничная для приоритетной уборки точек командования.
-job-description-oversightofficer = Смотрите за соблюдением закона, тех кто смотрит за соблюдением закона
+

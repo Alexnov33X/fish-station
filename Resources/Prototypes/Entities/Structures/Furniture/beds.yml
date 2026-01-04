@@ -10,7 +10,7 @@
       types:
         Poison: -0.1
         Blunt: -0.1
-        Mangleness: -0.5 #Fish-Edit
+        Mangleness: -0.25 #Fish-Edit
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -19,14 +19,14 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.05"
-        density: 190
+        density: 1900 #SUNRISE-EDIT
         mask:
         - TableMask
   - type: Sprite
     sprite: Structures/Furniture/furniture.rsi
     state: bed
     noRot: true
-    drawdepth: Puddles #Sunrise-add
+    drawdepth: HighFloorObjects #Sunrise-add
   - type: Strap
     position: Down
     rotation: -90
@@ -66,6 +66,7 @@
     anchored: true
     noRot: true
   - type: Anchorable
+    delay: 5 #SUNRISE-EDIT
   - type: Pullable
   - type: CanSleepOnBuckle # Sunrise-Edit
 
@@ -84,7 +85,7 @@
       types:
         Poison: -0.2
         Blunt: -0.2
-        Mangleness: -1 #Fish-Edit
+        Mangleness: -0.5 #Fish-Edit
   - type: Construction
     graph: bed
     node: medicalbed
