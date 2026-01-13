@@ -111,16 +111,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: stripe_top
-      color: "#9c2600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: orange
+    - state: department-side
+      color: "#bdaa00"
     - sprite: *sunrise-icon-rsi
-      offset: &icon-offset-old -0.1, 0.06 # спрайты ID карт для ПТ не обновлены, поэтому возвращаем старый offset
+      offset: *icon-offset
       state: PrisonEngineer
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonEngineer
 
@@ -132,16 +130,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: stripe_top
-      color: "#9c2600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: orange
+    - state: department-side
+      color: "#663170"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: PrisonScientist
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonScientist
 
@@ -153,18 +149,35 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: stripe_top
-      color: "#9c2600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: orange
+    - state: department-side
+      color: "#53788d"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: PrisonDoctor
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonDoctor
+
+- type: entity
+  parent: IDCardStandard
+  id: PrisonTraineeIDCard
+  name: prison trainee ID card
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: orange
+    - state: department-side
+      color: "#966600"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: PrisonGuard
+  - type: Item
+    heldPrefix: orange
+  - type: PresetIdCard
+    job: PrisonTrainee
 
 - type: entity
   parent: IDCardStandard
@@ -174,16 +187,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: stripe_top
-      color: "#9c2600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: orange
+    - state: department-side
+      color: "#acbb99"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: PrisonChef
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonChef
 
@@ -195,16 +206,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: stripe_top
-      color: "#9c2600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: orange
+    - state: department-side
+      color: "#610000"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: PrisonWorker
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonWorker
 
@@ -216,16 +225,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: dark-orange-space-prison
-    - state: stripe_top
-      color: "#900600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: silver
+    - state: department-side
+      color: "#745288"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: PrisonInspector
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: silver
   - type: PresetIdCard
     job: PrisonInspector
 
@@ -275,33 +282,33 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: prisoner-space-prison
+    - state: space-prison
     - sprite: *icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: Prisoner
   - type: Item
     heldPrefix: space-prison
   - type: PresetIdCard
     job: PlanetPrisoner
 
-- type: entity
-  parent: IDCardStandard
-  id: GuardIDCard
-  name: guard ID card
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
-    layers:
-    - state: space-prison
-    - state: department-side
-      color: *color-security
-    - sprite: *sunrise-icon-rsi
-      offset: *icon-offset
-      state: PrisonGuard
-  - type: Item
-    heldPrefix: space-prison
-  - type: PresetIdCard
-    job: PrisonGuard
+# - type: entity
+#   parent: IDCardStandard
+#   id: GuardIDCard
+#   name: guard ID card
+#   components:
+#   - type: Sprite
+#     sprite: _Sunrise/Objects/Misc/id_cards.rsi
+#     layers:
+#     - state: orange
+#     - state: department-side
+#       color: *color-security
+#     - sprite: *sunrise-icon-rsi
+#       offset: *icon-offset
+#       state: PrisonGuard
+#   - type: Item
+#     heldPrefix: orange
+#   - type: PresetIdCard
+#     job: PrisonGuard
 
 - type: entity
   parent: IDCardStandard
@@ -311,14 +318,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: space-prison
+    - state: orange
     - state: department-side
       color: *color-security
     - sprite: *sunrise-icon-rsi
       offset: *icon-offset
       state: PrisonPilot
   - type: Item
-    heldPrefix: space-prison
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonPilot
 
@@ -330,14 +337,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: dark-orange-space-prison
-    - state: stripe_top
-      color: "#900600"
-    - state: stripe_bottom
-      color: "#730401"
+    - state: gold
+    - state: department-side
+      color: "#463636"
     - sprite: *sunrise-icon-rsi
-      offset: *icon-offset-old
+      offset: *icon-offset
       state: HeadOfPrison
+  - type: Item
+    heldPrefix: gold
   - type: PresetIdCard
     job: HeadOfPrison
 
