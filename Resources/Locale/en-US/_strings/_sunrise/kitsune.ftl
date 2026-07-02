@@ -12,3 +12,15 @@ kitsune-transform-expired = Your fox form time has expired! You revert to humano
 kitsune-revert-not-transformed = You are not in fox form!
 kitsune-revert-starting = You begin reverting back to humanoid form...
 kitsune-revert-success = You revert back to humanoid form!
+
+kitsune-fire-action-name = Kitsune Fire
+kitsune-fire-action-description = Ignite a target with magical blue fire that heals Burns.
+
+kitsune-lights-action-name = Fox Lights
+kitsune-lights-action-description = Summon dancing wisps of fox fire to light your way.
+
+ent-KitsuneFoxLight = Fox Light
+ent-KitsuneFoxLight-desc = A mystical wisp of blue fire.
+
+ent-MacKitsune = Kitsune
+ent-MacKitsune-desc = A nine-tailed fox spirit.

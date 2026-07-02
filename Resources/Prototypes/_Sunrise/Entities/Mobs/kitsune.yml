@@ -1,12 +1,24 @@
 - type: entity
   parent: MobHuman
-  id: MobKitsune
+  id: MacKitsune
   name: Kitsune
   components:
   - type: Damageable
     damageModifierSet: Kitsune
   - type: KitsuneTransform
+  - type: KitsuneFoxLights
   - type: ActionsContainer
   - type: ActionGrant
     actions:
     - ActionKitsuneTransform
+    # - ActionKitsuneFire
+    - ActionKitsuneFoxLights
+  - type: TemperatureDamage
+    heatDamageThreshold: 400
+    coldDamageThreshold: 200
+    coldDamage:
+      types:
+        Cold: 0.1
+    heatDamage:
+      types:
+        Heat: 1.5

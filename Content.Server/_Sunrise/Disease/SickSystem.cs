@@ -34,6 +34,8 @@ using Content.Shared.Speech.Muting;
 using Content.Shared.Store.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Inventory;
+using Content.Shared.Zombies;
 namespace Content.Server._Sunrise.Disease;
 public sealed class SickSystem : SharedSickSystem
 {
@@ -115,6 +117,9 @@ public sealed class SickSystem : SharedSickSystem
                 solution.AddReagent(reagentId, FixedPoint2.New((int)stream.BloodReferenceSolution.MaxVolume));
             }
 
+            if (solution.Volume == 0)
+                return;
+
             _bloodstream.ChangeBloodReagents(uid, solution);
         }
     }
@@ -153,6 +158,7 @@ public sealed class SickSystem : SharedSickSystem
                     RaiseNetworkEvent(new ClientInfectEvent(GetNetEntity(uid), GetNetEntity(component.owner)));
                     diseaseComp.SickOfAllTime++;
                     AddMoney(component.owner, 5);
+                    _popupSystem.PopupEntity(Loc.GetString("disease-infect-reward", ("points", 5)), component.owner, component.owner, PopupType.Medium);
 
                     component.Inited = true;
                 }
@@ -222,7 +228,7 @@ public sealed class SickSystem : SharedSickSystem
                             if (!HasComp<SleepyComponent>(uid))
                             {
                                 var c = AddComp<SleepyComponent>(uid);
-                                EntityManager.EntitySysManager.GetEntitySystem<SleepySystem>().SetNarcolepsy(uid, new Vector2(10, 30), new Vector2(300, 600), c);
+                                EntityManager.EntitySysManager.GetEntitySystem<SleepySystem>().SetNarcolepsy(uid, new Vector2(60, 80), new Vector2(8, 12), c);
                             }
                             break;
                         case "Muted":
@@ -272,7 +278,11 @@ public sealed class SickSystem : SharedSickSystem
                             {
                                 if (HasComp<HumanoidAppearanceComponent>(entity) && !HasComp<SickComponent>(entity) && !HasComp<DiseaseImmuneComponent>(entity))
                                 {
-                                    OnInfected(entity, component.owner, disease.CoughSneezeInfectChance);
+                                    var ev = new ZombificationResistanceQueryEvent(SlotFlags.HEAD | SlotFlags.MASK | SlotFlags.OUTERCLOTHING);
+                                    RaiseLocalEvent(entity, ev);
+
+                                    if (_robustRandom.Prob(ev.TotalCoefficient))
+                                        OnInfected(entity, component.owner, disease.CoughSneezeInfectChance);
                                 }
                             }
                         }
@@ -290,7 +300,11 @@ public sealed class SickSystem : SharedSickSystem
                             {
                                 if (HasComp<HumanoidAppearanceComponent>(entity) && !HasComp<SickComponent>(entity) && !HasComp<DiseaseImmuneComponent>(entity))
                                 {
-                                    OnInfected(entity, component.owner, disease.CoughSneezeInfectChance);
+                                    var ev = new ZombificationResistanceQueryEvent(SlotFlags.HEAD | SlotFlags.MASK | SlotFlags.OUTERCLOTHING);
+                                    RaiseLocalEvent(entity, ev);
+
+                                    if (_robustRandom.Prob(ev.TotalCoefficient))
+                                        OnInfected(entity, component.owner, disease.CoughSneezeInfectChance);
                                 }
                             }
                         }

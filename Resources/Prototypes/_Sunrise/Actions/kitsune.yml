@@ -31,3 +31,37 @@
     itemIconStyle: NoItem
   - type: InstantAction
     event: !type:KitsuneRevertActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionKitsuneFire
+  name: kitsune-fire-action-name
+  description: kitsune-fire-action-description
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Effects/fire.rsi, state: 1 }
+    useDelay: 15
+    itemIconStyle: NoItem
+    checkCanInteract: false
+  - type: TargetAction
+    range: 15
+    checkCanAccess: false
+  - type: EntityTargetAction
+    canTargetSelf: true
+    event: !type:KitsuneFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionKitsuneFoxLights
+  name: kitsune-lights-action-name
+  description: kitsune-lights-action-description
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Objects/Weapons/Guns/Projectiles/magic.rsi, state: magicm_cyan }
+    useDelay: 10
+    itemIconStyle: NoItem
+    checkCanInteract: true
+  - type: InstantAction
+    event: !type:KitsuneFoxLightsActionEvent

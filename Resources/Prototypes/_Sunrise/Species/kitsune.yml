@@ -2,7 +2,7 @@
   id: Kitsune
   name: species-name-kitsune
   roundStart: true
-  prototype: MobKitsune
+  prototype: MacKitsune
   bodyTypes:
   - HumanNormal
   - HumanSlimFemale

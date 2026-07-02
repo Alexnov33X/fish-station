@@ -5,8 +5,6 @@ using Content.Server.Polymorph.Systems;
 using Content.Shared._Sunrise.Kitsune;
 using Content.Shared._Sunrise.SpriteColor;
 using Content.Shared._Sunrise.TTS;
-using Content.Shared.Actions;
-using Content.Shared.Actions.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
@@ -16,8 +14,6 @@ using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Localization;
-using Robust.Shared.Log;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Sunrise.Kitsune;
@@ -35,8 +31,6 @@ public sealed class KitsuneTransformSystem : EntitySystem
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly SpriteColorSystem _spriteColor = default!;
-
-    private ISawmill _sawmill = default!;
 
     // Dictionary to track when each transformed entity should auto-revert
     private Dictionary<EntityUid, float> _transformDurations = new();
@@ -74,12 +68,11 @@ public sealed class KitsuneTransformSystem : EntitySystem
         // Auto-revert expired transforms
         foreach (var uid in expired)
         {
-            if (TryComp<KitsuneTransformComponent>(uid, out var component) &&
-                TryComp<PolymorphedEntityComponent>(uid, out var morphComp))
-            {
-                _polymorph.Revert((uid, morphComp));
-                _popup.PopupEntity(Loc.GetString("kitsune-transform-expired"), uid, uid, PopupType.MediumCaution);
-            }
+            if (!TryComp<KitsuneTransformComponent>(uid, out var component) ||
+                !TryComp<PolymorphedEntityComponent>(uid, out var morphComp))
+                continue;
+            _polymorph.Revert((uid, morphComp));
+            _popup.PopupEntity(Loc.GetString("kitsune-transform-expired"), uid, uid, PopupType.MediumCaution);
         }
     }
 
@@ -104,11 +97,10 @@ public sealed class KitsuneTransformSystem : EntitySystem
             NeedHand = false,
         };
 
-        if (_doAfter.TryStartDoAfter(doAfterArgs))
-        {
-            _popup.PopupEntity(Loc.GetString("kitsune-transform-starting"), uid, uid, PopupType.MediumCaution);
-            _audio.PlayPvs(new SoundPathSpecifier("/Audio/_Sunrise/BloodCult/butcher.ogg"), uid);
-        }
+        if (!_doAfter.TryStartDoAfter(doAfterArgs))
+            return;
+        _popup.PopupEntity(Loc.GetString("kitsune-transform-starting"), uid, uid, PopupType.MediumCaution);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_Sunrise/BloodCult/butcher.ogg"), uid);
     }
 
     private void OnKitsuneTransformDoAfter(EntityUid uid, KitsuneTransformComponent component, ref KitsuneTransformDoAfterEvent args)
@@ -120,7 +112,6 @@ public sealed class KitsuneTransformSystem : EntitySystem
         if (!_prototypeManager.TryIndex<PolymorphPrototype>(new ProtoId<PolymorphPrototype>("KitsuneTransform"), out var prototype))
         {
             _popup.PopupEntity(Loc.GetString("kitsune-transform-failed"), uid, uid, PopupType.MediumCaution);
-            _sawmill.Warning($"Kitsune transform failed: could not find 'KitsuneTransform' polymorph prototype");
             return;
         }
 
@@ -129,8 +120,8 @@ public sealed class KitsuneTransformSystem : EntitySystem
         {
             DamageDict = new Dictionary<string, FixedPoint2>
             {
-                { "Slash", FixedPoint2.New(9) }
-            }
+                { "Slash", FixedPoint2.New(9) },
+            },
         };
         _damage.TryChangeDamage(uid, damage);
         // Store the original entity reference before polymorph
@@ -146,9 +137,7 @@ public sealed class KitsuneTransformSystem : EntitySystem
         if (TryComp<TTSComponent>(uid, out var originalTts))
         {
             if (TryComp<TTSComponent>(newUid, out var foxTts))
-            {
                 foxTts.VoicePrototypeId = originalTts.VoicePrototypeId;
-            }
         }
 
         // Apply the humanoid's hair color to the colored fur layer
@@ -202,7 +191,7 @@ public sealed class KitsuneTransformSystem : EntitySystem
         if (!TryComp<PolymorphedEntityComponent>(uid, out var morphComp))
             return;
         _polymorph.Revert((uid, morphComp));
-
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_Sunrise/BloodCult/enter_blood.ogg"), uid);
         _popup.PopupEntity(Loc.GetString("kitsune-revert-success"), uid, uid, PopupType.MediumCaution);
     }
 }

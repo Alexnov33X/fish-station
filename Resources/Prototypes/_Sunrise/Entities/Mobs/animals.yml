@@ -70,6 +70,16 @@
       Male: MaleVulpkanin
       Female: FemaleVulpkanin
       Unsexed: MaleVulpkanin
+  - type: TemperatureDamage
+    heatDamageThreshold: 400
+    coldDamageThreshold: 200
+    coldDamage:
+      types:
+        Cold: 0.1
+    heatDamage:
+      types:
+        Heat: 1.5
+  - type: ToggleableNightVision
 
 # Player-transformed Kitsune form with dual sprite layers for color + white parts
 - type: entity

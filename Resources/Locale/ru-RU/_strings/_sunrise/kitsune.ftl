@@ -12,3 +12,15 @@ kitsune-transform-expired = Время действия вашей формы л
 kitsune-revert-not-transformed = Вы не в форме лисы!
 kitsune-revert-starting = Вы начинаете возвращаться в гуманоидную форму...
 kitsune-revert-success = Вы вернулись в гуманоидную форму!
+
+kitsune-fire-action-name = Огонь Кицунэ
+kitsune-fire-action-description = Поджечь цель лисьим пламенем, которое лечит ожоги.
+
+kitsune-lights-action-name = Блуждающий огонёк
+kitsune-lights-action-description = Призовите блуждающий огонёк на одну минуту, чтобы осветить свой путь.
+
+ent-KitsuneFoxLight = Блуждающий огонёк
+ent-KitsuneFoxLight-desc = Мистический огонек голубого пламени.
+
+ent-MacKitsune = Кицунэ
+ent-MacKitsune-desc = Девятихвостая лиса.

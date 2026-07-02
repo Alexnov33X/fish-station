@@ -113,3 +113,9 @@
   name: species-name-kitsune
   text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Kitsune.xml"
 # Sunrise-End
+
+- type: guideEntry
+  id: Kitsune
+  name: species-name-kitsune
+  text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Kitsune.xml"
+
