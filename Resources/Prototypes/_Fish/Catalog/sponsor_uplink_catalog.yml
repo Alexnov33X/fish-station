@@ -79,6 +79,17 @@
     stock: 1
 
 - type: listing
+  id: UplinkFishPlushieSpEktr
+  productEntity: PlushieSpEktr
+  cost:
+    Suntick: 4
+  categories:
+  - SpecialThings
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: UplinkFishPlushieOlegmol
   productEntity: PlushieOlegmol
   cost:
@@ -121,3 +132,26 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinkFishPlushieIsaacLow
+  productEntity: PlushieIsaacLow
+  cost:
+    Suntick: 4
+  categories:
+  - SpecialThings
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: UplinkFishPlushieMasya
+  productEntity: PlushieMasya
+  cost:
+    Suntick: 4
+  categories:
+  - SpecialThings
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
