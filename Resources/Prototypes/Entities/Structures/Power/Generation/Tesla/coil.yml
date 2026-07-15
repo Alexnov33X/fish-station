@@ -83,7 +83,9 @@
     damageContainer: StructuralInorganic
   - type: ExaminableDamage
     messages: WindowMessages
-  - type: Repairable
+  - type: Repairable # Fish-edit
+    doAfterDelay: 5
+    fuelCost: 5
   - type: DamageVisuals
     thresholds: [8, 16, 25]
     damageDivisor: 3.333
@@ -177,6 +179,8 @@
   - type: ExaminableDamage
     messages: WindowMessages
   - type: Repairable
+    doAfterDelay: 5 # Fish-edit
+    fuelCost: 5 # Fish-edit
   - type: Damageable
     damageContainer: StructuralInorganic
   - type: DamageVisuals

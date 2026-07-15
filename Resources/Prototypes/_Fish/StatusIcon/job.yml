@@ -1,0 +1,97 @@
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNanotrasenTrainee
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: NanotrasenTrainee
+  jobName: job-name-centcomoff
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommMedicalDoctor
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommMedicalDoctor
+  jobName: job-name-centcomm-doctor
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommChef
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommChef
+  jobName: job-name-centcomm-chef
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommBartender
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommBartender
+  jobName: job-name-centcomm-bartender
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommSectoralJudge
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: SectoralJudge
+  jobName: job-name-centcomm-sectoral-judge
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconOversightOfficer
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: OversightOfficer
+  jobName: job-name-centcomm-sectoral-judge
+
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSpecOpsOfficer
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: SpecOpsOfficer
+  jobName: job-name-specopsofficer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommOfficer
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommOfficer
+
+  jobName: job-name-centcomofficer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommEngineer
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommEngineer
+  jobName: job-name-centcomengineer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconCentcommHead
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: CentcommHead
+  jobName: job-name-centcomhead
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNanotrasen_representative
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: NanoTrasen_representative
+  jobName: job-name-centcomoff
+
+- type: jobIcon
+  parent: JobIcon
+  id: NTR_operative
+  icon:
+    sprite: /Textures/_Fish/Interface/Misc/job_icons.rsi
+    state: NTR_operative
+  jobName: job-name-blueshield-operative

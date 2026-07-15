@@ -1,5 +1,5 @@
 ent-RandomHumanoidSpawnerDeathSquad = Агент Эскадрона смерти
-    .suffix = Роль ОБР, Эскадрон смерти
+    .suffix = Роль ОБР, Эскадрон смерти, 80 БК и К
     .desc = { "" }
 ent-RandomHumanoidSpawnerERTLeader = ОБР лидер
     .suffix = Роль ОБР, Базовый
@@ -149,3 +149,4 @@ ent-SyndieDisasterVictimSpawner = жертва катастрофы Синдик
     .desc = { ent-MarkerBase.desc }
 ent-RandomHumanoidSyndieDisasterVictim = жертва катастрофы Синдикат роль призрака
     .desc = { "" }
+

@@ -1,0 +1,69 @@
+- type: job
+  id: SpecOpsOfficer
+  name: job-name-specopsofficer
+  description: job-description-specopsofficer
+  playTimeTracker: JobSpecOpsOfficer
+  requirements:
+    - !type:DiscordRoleRequirement
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 14400 # 4 hours
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 14400 # 4 hours
+  weight: 30
+  setPreference: true
+  startingGear: SpecOpsOfficerGear
+  icon: "JobIconSpecOpsOfficer"
+  overrideConsoleVisibility: false # Sunrise added
+  supervisors: job-supervisors-specopshead
+  radioBold: true
+  canBeAntag: false
+  alwaysUseSpawner: true
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: SpecOpsOfficerGear
+  equipment:
+    shoes: ClothingShoesCentcomBlack
+    head: ClothingHeadCapCentcomBlack  #Fish-Edit
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCombat
+#    outerClothing: ClothingOuterArmorBasicSlim
+    id: SpecOpsOfficerPDA
+    ears: ClothingHeadsetAltSpecOpsOfficer
+    belt: WeaponPistolN1984
+  storage:
+    back:
+    - PenCentcom
+    - BoxFolderBlack
+
+- type: entity
+  parent: CentcomPDA
+  id: SpecOpsOfficerPDA
+  suffix: Death Squad
+  components:
+  - type: Pda
+    id: SpecOpsOfficerIDCard
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
+
+- type: entity
+  parent: IDCardStandard
+  id: SpecOpsOfficerIDCard
+  name: special operations officer ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: Item
+    heldPrefix: blue
+  - type: PresetIdCard
+    job: SpecOpsOfficer

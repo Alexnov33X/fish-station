@@ -1,0 +1,37 @@
+- type: job
+  id: RepresentativeBlueShield
+  name: job-name-blueshield-operative
+  description: job-description-blueshield-operative
+  playTimeTracker: JobRepresentativeBlueShield
+  requirements:
+   - !type:DepartmentTimeRequirement
+     department: BlueShield
+     time: 62000 # 20 hrs
+   - !type:DepartmentTimeRequirement
+     department: Command
+     time: 62000 # 20 hrs
+   - !type:AgeRequirement
+     requiredAge: 25
+  startingGear: RepresentativeBlueShieldGear
+  icon: JobIconBlueShield
+
+  supervisors: job-supervisors-representative
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  special:
+   - !type:AddImplantSpecial
+     implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: RepresentativeBlueShieldGear
+  equipment:
+   shoes: ClothingShoesBootsBlueShieldFilled
+   eyes: ClothingEyesGlassesBlueShield
+   head: ClothingHeadHatBeretBlueShield
+   id: BlueShieldOperativePDA
+   ears: ClothingHeadsetCommand
+   gloves: ClothingHandsGlovesCombat
+  storage:
+   back:
+   - HandheldBSOCrewMonitor

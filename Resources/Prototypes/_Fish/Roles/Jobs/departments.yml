@@ -1,0 +1,19 @@
+- type: department
+  id: SpecialOperationsAlt
+  name: department-SpecialOperations
+  description: department-SpecialOperations-description
+  color: "#0c344d"
+  roles:
+   - SpecOpsOfficer
+  weight: 57
+
+- type: department
+  id: Court
+  name: department-Court
+  description: department-Court-description
+  color: "#0c344d"
+  roles:
+   - Magistrat
+   - CentcommSectoralJudge
+  weight: 55
+  primary: false

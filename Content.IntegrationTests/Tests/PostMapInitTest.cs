@@ -72,7 +72,14 @@ namespace Content.IntegrationTests.Tests
         private static readonly string[] DoNotMapWhitelist =
         {
             "/Maps/centcomm.yml",
-            "/Maps/Shuttles/AdminSpawn/**" // admin gaming
+            "/Maps/Shuttles/AdminSpawn/**", // admin gaming
+            // Fish - Start
+            "/Maps/_Fish/Station/centcomm.yml",
+            "/Maps/_Fish/Shuttles/Antag/**",
+            "/Maps/_Fish/Shuttles/DSO/**",
+            "/Maps/_Fish/Shuttles/DSO/ERT/**",
+            "/Maps/_Fish/Nonstations/**",
+            // Fish - End
         };
 
         /// <summary>
@@ -84,24 +91,39 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] GameMaps =
         {
+            // Fish - Start
             "Dev",
-            "TestTeg",
-            "Fland",
-            "Packed",
-            "Bagel",
-            "CentComm",
-            "Box",
-            "Marathon",
-            "MeteorArena",
-            "Saltern",
-            "Reach",
-            "Oasis",
-            "Plasma",
-            "Elkridge",
-            "Relic",
-            "dm01-entryway",
-            "Exo",
-            "Snowball",
+            //"TestTeg",
+            //"Fland",
+            //"Packed",
+            //"Bagel",
+            //"CentComm",
+            //"Box",
+            //"Marathon",
+            //"MeteorArena",
+            //"Saltern",
+            //"Reach",
+            //"Oasis",
+            //"Plasma",
+            //"Elkridge",
+            //"Relic",
+            //"dm01-entryway",
+            //"Exo",
+            //"Snowball",
+            "FishBagel",
+            "FishBarratry",
+            "FishBox",
+            "FishCase",
+            "FishMarathon",
+            "FishDelta",
+            "FishIrefit",
+            "FishOasis",
+            "FishPlasma",
+            "FishPacked",
+            "FishSnowball",
+            "FishSuharik",
+            "FishTerraBiome",
+            // Fish - End
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
@@ -684,3 +706,5 @@ namespace Content.IntegrationTests.Tests
         }
     }
 }
+
+

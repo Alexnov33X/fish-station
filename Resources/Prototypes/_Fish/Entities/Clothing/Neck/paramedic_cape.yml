@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingCloakBase
+  id: ClothingNeckCloakParamedicFish
+  name: paramedic's cape
+  description: "A cape granted to seasoned paramedics dedicated to saving lives."
+  suffix: Fish
+  components:
+  - type: Sprite
+    sprite: _Fish/Clothing/Neck/Cloaks/paramedCape.rsi
+    state: paramedCape
+  - type: Clothing
+    sprite: _Fish/Clothing/Neck/Cloaks/paramedCape.rsi
+    clothingVisuals:
+      neck:
+      - state: paramedCape

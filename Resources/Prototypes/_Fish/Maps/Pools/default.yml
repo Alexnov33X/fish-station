@@ -1,0 +1,14 @@
+- type: gameMapPool
+  id: FishMapPool
+  maps:
+  - FishDelta
+  - FishMarathon
+  - FishPacked
+  - FishCase
+  - FishOasis
+  - FishPlasma
+  - FishBox
+  - FishBagel
+  - FishTerraBiome
+  - FishSnowball
+  - FishSuharik

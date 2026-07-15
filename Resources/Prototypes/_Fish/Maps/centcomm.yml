@@ -1,0 +1,39 @@
+- type: gameMap
+  id: FishCentComm
+  mapName: 'Central Command'
+  mapPath: /Maps/_Fish/Station/centcomm.yml
+  maxRandomOffset: 0
+  randomRotation: false
+  minPlayers: 10
+  stations:
+    centcomm:
+      stationProto: NanotrasenCentralCommand
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: '{0} Центральное Коммандование {1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: '-AHQ'
+      - type: SpawnGridAndDockToStation
+        grids:
+        - gridPath: /Maps/_Fish/Shuttles/DSO/CentCommOfficial.yml
+          priorityTag: DockCentComm
+        - gridPath: /Maps/_Fish/Shuttles/DSO/ert_striker.yml
+          priorityTag: DockFishERT
+        - gridPath: /Maps/_Fish/Shuttles/DSO/cburn_box.yml
+          priorityTag: DockFishCBURN
+        - gridPath: /Maps/_Fish/Shuttles/DSO/DS_maxtac.yml
+          priorityTag: DockFishDS
+        - gridPath: /Maps/_Fish/Shuttles/DSO/ert_large.yml
+          priorityTag: DockFishERTBig
+      - type: StationJobs
+        availableJobs:
+          CentCommOfficer: [ 3, 3 ]
+          CentCommTrainee: [ 3, 3 ]
+          CentcommBlueShield: [ 3, 3 ]
+          CentcommMedicalDoctor: [ 1, 1 ]
+          CentcommChef: [ 1, 1 ]
+          CentcommBartender: [ 1, 1 ]
+          CentcommSectoralJudge: [ 1, 1 ]
+          OversightOfficer: [ 1, 1 ]
+          SpecOpsOfficer: [ 1, 1 ]

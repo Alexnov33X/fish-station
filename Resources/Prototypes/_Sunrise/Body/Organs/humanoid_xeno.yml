@@ -42,6 +42,7 @@
   - type: InputMover
   - type: Examiner
   - type: BlockMovement
+    blockInteraction: false # Fish-edit
   - type: BadFood
   - type: Tag
     tags:

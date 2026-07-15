@@ -5,6 +5,7 @@
   color: "#FF5297"
   weight: 80
   roles:
+    - OversightOfficer # fish-add
     - Magistrat
     - IAA
     - Lawyer
@@ -18,7 +19,8 @@
   roles:
     - BlueShieldEnsign
     - BlueShieldOfficer
-    - BlueShieldOperative
+    # - BlueShieldOperative #Fish-edit
+    - RepresentativeBlueShield #Fish-add
   primary: false
   weight: 50
 
@@ -67,8 +69,16 @@
   description: department-CentralCommand-description
   color: "#0d4f1d"
   roles:
-  - CentCommOperator
+  # - CentCommOperator #Fish-edit
+  # - CentCommOperator #Fish-edit
   - CentCommOfficial
+  - CentCommHead #Fish-edit
+  - CentCommOfficer #Fish-edit
+  - CentCommTrainee #Fish-edit
+  - CentcommBlueShield #Fish-edit
+  - CentcommChef #Fish-edit
+  - CentcommMedicalDoctor #Fish-edit
+  - CentcommBartender #Fish-edit
   weight: 120
 
 - type: department

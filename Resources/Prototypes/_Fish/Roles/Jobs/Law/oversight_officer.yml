@@ -1,0 +1,76 @@
+- type: job
+  id: OversightOfficer
+  name: job-name-oversightofficer
+  description: job-description-oversightofficer
+  playTimeTracker: JobOversightOfficer
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 54000 # 15 hrs
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # 5 hrs
+    - !type:DepartmentTimeRequirement
+      department: Law
+      time: 18000 # 5 hrs
+    - !type:DiscordRoleRequirement
+  startingGear: OversightOfficerGear
+  icon: JobIconOversightOfficer
+  weight: 80 # fish-edit
+  setPreference: true # fish-edit
+  overrideConsoleVisibility: false # fish-edit
+  supervisors: job-supervisors-oversightdep
+  radioBold: true
+  canBeAntag: false
+  alwaysUseSpawner: true
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]
+
+- type: startingGear
+  id: OversightOfficerGear
+  equipment:
+    neck: ClothingNeckLawDepbadge
+    shoes: ClothingShoesBootsLaceup
+    head: ClothingHeadCapNTGR
+    eyes: ClothingEyesGlassesHiddenSecurity
+    gloves: ClothingHandsGlovesColorWhite
+    outerClothing: ClothingOuterArmorNTRGLeadOpened
+    id: OversightOfficerPDA
+    ears: ClothingHeadsetFishCentCom
+    belt: BoxFolderCentComClipboard
+    pocket1: WeaponEnergyGunPulseRevolver
+    pocket2: PenCentcom
+  storage:
+    back:
+    # - ClothingOuterHardsuitNTRG
+    - CrowbarRed
+
+- type: entity
+  parent: NtrGuardPDA
+  id: OversightOfficerPDA
+  name: Oversight Officer's PDA
+  description: Oversight Officer's PDA
+  components:
+  - type: Pda
+    id: OversightOfficerIDCard
+
+- type: entity
+  parent: IDCardStandard
+  id: OversightOfficerIDCard
+  name: Oversight Officer ID card
+  description: Oversight Officer ID card
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: silver
+    - state: green
+  - type: Item
+    heldPrefix: silver
+  - type: PresetIdCard
+    job: OversightOfficer

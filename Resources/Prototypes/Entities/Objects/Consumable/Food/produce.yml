@@ -289,7 +289,7 @@
   - type: MeleeChemicalInjector
     transferAmount: 5
     solution: food
-    pierceArmor: true
+    pierceArmor: false # Fish-edit
   - type: Extractable
     grindableSolutionName: food
   - type: DamageOnInteract

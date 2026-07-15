@@ -3,6 +3,7 @@
   name: loadout-group-socks
   minLimit: 1
   loadouts:
+  - ThighDarkSocks
   - ThighWhiteSocks
   - ShortWhiteSocks
   - FishnetTights
@@ -282,6 +283,18 @@
   - BlueShieldThong
   - BlueShieldBoxers
 
+# Fish-start
+- type: loadoutGroup
+  id: BlueShieldOuterClothing
+  name: loadout-group-blueshield-outerclothing
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - BlueShieldArmor
+  - BlueShieldHardsuit
+  - BlueShieldHardsuitMark2
+# Fish-end
+
 - type: loadoutGroup
   id: AdjutantBra
   name: loadout-group-adj-bra
@@ -394,7 +407,7 @@
   name: loadout-group-centcomm-operator-head-hat
   loadouts:
   - HeadHatBeretCentcomNaval
-  - HeadHatCentcomcap
+  # - HeadHatCentcomcap #Fish-Edit
 
 - type: loadoutGroup
   id: ChiefEngineerBackpack
@@ -852,6 +865,7 @@
   - SunriseScarfCyan
   - SunriseScarfBlue
   - SunriseStethoscope
+  - ParamedicCape # Fish-Edit
 
 - type: loadoutGroup
   id: SunriseParamedicMask

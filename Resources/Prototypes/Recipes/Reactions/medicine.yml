@@ -270,6 +270,8 @@
       amount: 1
     Water:
       amount: 1
+    Zinc:
+      amount: 1 # Fish-edit
   products:
     Impedrezene: 1
 

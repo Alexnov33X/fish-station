@@ -71,6 +71,9 @@
   name: juggernaut
   description: big and scary
   components:
+    - type: Damageable
+      damageContainer: Biological
+      damageModifierSet: BloodCultJuggernautModifierSet
     - type: Fixtures
       fixtures:
         fix1:
@@ -89,7 +92,7 @@
         300: Dead
     - type: MovementSpeedModifier
       baseWalkSpeed: 1
-      baseSprintSpeed: 2
+      baseSprintSpeed: 2.5 #Fish-edit
     - type: Construct
       actions: [JuggernautCreateWall]
     - type: Hands
@@ -144,7 +147,7 @@
   components:
     - type: MovementSpeedModifier
       baseWalkSpeed: 3.0
-      baseSprintSpeed: 3.0
+      baseSprintSpeed: 4.0
     - type: MobThresholds
       thresholds:
         0: Alive
@@ -166,7 +169,7 @@
       damage:
         types:
           Blunt: 10
-          Slash: 10
+          Slash: 20 #Fish-edit
 
 - type: entity
   id: ReaperConstruct

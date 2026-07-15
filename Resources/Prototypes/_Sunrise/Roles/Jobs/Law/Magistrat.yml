@@ -5,13 +5,14 @@
   playTimeTracker: JobMagistrat
   requirements:
     - !type:DepartmentTimeRequirement
-      department: Command
+      department: Law
       time: 108000 #30 hrs
   startingGear: MagistratGear
   icon: "JobIconMagistrat"
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  setPreference: false
+  setPreference: true # fish-edit
+  overrideConsoleVisibility: false # Fish-edit
   radioBold: true
   displayWeight: 75
   access:

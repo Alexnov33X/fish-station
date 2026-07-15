@@ -20,6 +20,7 @@
   - Tajaran # Sunrise-Add
   - Vox
   - Vulpkanin
+  - Kitsune # Sunrsise-edit
 
 - type: guideEntry
   id: Arachnid
@@ -107,4 +108,9 @@
   name: species-name-felinid
   text: "/ServerInfo/Guidebook/_Sunrise/Mobs/Felinid.xml"
 
-# Sunrise-End
+# - type: guideEntry # Fish-Edit
+#   id: Kitsune
+#   name: species-name-kitsune
+#   text: "/ServerInfo/Guidebook/_Fish/Mobs/Kitsune.xml"
+
+

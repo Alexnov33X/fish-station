@@ -68,7 +68,7 @@ jobs:
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
     - name: Publish version
-      run: Tools/publish_multi_request.py --fork-id sunrise_station_stable
+      run: Tools/publish_multi_request.py --fork-id fish_station_stable
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
@@ -86,5 +86,13 @@ jobs:
       run: Tools/_sunrise/actions_changelogs_since_last_run.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_FISH }}
+        CHANGELOG_FILE: 'Resources/Changelog/ChangelogFish.yml'
+        
+    - name: Publish discord changelog
+      run: Tools/_sunrise/actions_changelogs_since_last_run.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_SUNRISE }}
         CHANGELOG_FILE: 'Resources/Changelog/ChangelogSunrise.yml'
+  
