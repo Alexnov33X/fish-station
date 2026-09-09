@@ -481,3 +481,13 @@
     message: Маленькое обновление шаттла ПЦК.
   id: 47
   url: https://github.com/makura-games/fish-station/pull/439
+- author: dngcher
+  time: '2026-09-09T20:02:34.0000000+00:00'
+  changes:
+  - type: Add
+    message: БСА и консоль БСА, которые умеют стрелять в секторе станции
+  id: 48
+  url: https://github.com/makura-games/fish-station/pull/423
+  media:
+  - url: https://github.com/user-attachments/assets/ba4bd207-7f4f-4c89-b301-476246d19534
+    description: idle
