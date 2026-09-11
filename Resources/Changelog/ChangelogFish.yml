@@ -491,3 +491,10 @@
   media:
   - url: https://github.com/user-attachments/assets/ba4bd207-7f4f-4c89-b301-476246d19534
     description: idle
+- author: dng-cher
+  time: '2026-09-11T13:43:34.0000000+00:00'
+  changes:
+  - type: Add
+    message: Рандомная ротация шаттлов для станции.
+  id: 49
+  url: https://github.com/makura-games/fish-station/pull/442
