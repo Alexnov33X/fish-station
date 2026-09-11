@@ -498,3 +498,10 @@
     message: Рандомная ротация шаттлов для станции.
   id: 49
   url: https://github.com/makura-games/fish-station/pull/442
+- author: Ende
+  time: '2026-09-11T13:48:57.0000000+00:00'
+  changes:
+  - type: Fix
+    message: Фикс рекомендации по лечению от радиации
+  id: 50
+  url: https://github.com/makura-games/fish-station/pull/441
