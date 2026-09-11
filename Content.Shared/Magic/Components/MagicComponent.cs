@@ -36,7 +36,7 @@ public sealed partial class MagicComponent : Component
 
     // Fish-Edit start: требование нахождения на гриде
     /// <summary>
-    ///     Does this spell require the user to be on a grid?
+    ///     Требует ли это заклинание, чтобы пользователь находился на гриде?
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool RequiresGrid;
