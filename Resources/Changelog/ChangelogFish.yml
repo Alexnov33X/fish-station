@@ -528,3 +528,23 @@
     message: После перехода в призрака осколок души снова становится доступен как роль призрака.
   id: 51
   url: https://github.com/makura-games/fish-station/pull/368
+- author: Pifagor, Kaiten
+  time: '2026-09-11T16:35:51.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: 'Планетарная Война полностью переносится на архитектуру Sunrise — без
+
+      временных прототипов, workaround''ов и дублирующих систем.'
+  - type: Tweak
+    message: Разнообразные правки режима согласно указаниям Мизелия.
+  - type: Tweak
+    message: Роли режимы больше не отображаются в должностях персонажа.
+  id: 52
+  url: https://github.com/makura-games/fish-station/pull/372
+- author: Kaiten
+  time: '2026-09-11T16:36:08.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: По просьбе Финекса фоксиум теперь превращает в лису от 50 единиц. Слава фыр!
+  id: 53
+  url: https://github.com/makura-games/fish-station/pull/440
