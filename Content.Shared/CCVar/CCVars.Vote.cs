@@ -14,7 +14,7 @@ public sealed partial class CCVars
     ///     See vote.enabled, but specific to restart votes
     /// </summary>
     public static readonly CVarDef<bool> VoteRestartEnabled =
-        CVarDef.Create("vote.restart_enabled", false, CVar.SERVERONLY); // Fish-edit
+        CVarDef.Create("vote.restart_enabled", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Config for when the restart vote should be allowed to be called regardless with less than this amount of players.
@@ -26,7 +26,7 @@ public sealed partial class CCVars
     ///     Config for when the restart vote should be allowed to be called based on percentage of ghosts.
     /// </summary>
     public static readonly CVarDef<int> VoteRestartGhostPercentage =
-        CVarDef.Create("vote.restart_ghost_percentage", 55, CVar.SERVERONLY);
+        CVarDef.Create("vote.restart_ghost_percentage", 90, CVar.SERVERONLY); // Fish-edit
 
     /// <summary>
     ///     See vote.enabled, but specific to preset votes
