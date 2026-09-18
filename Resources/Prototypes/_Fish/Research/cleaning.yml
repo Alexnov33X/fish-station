@@ -1,4 +1,4 @@
-﻿- type: technology
+- type: technology
   id: AdvancedCleaningProducts
   name: research-technology-advanced-cleaning-products
   icon:
@@ -8,7 +8,7 @@
   tier: 3
   cost: 10000
   recipeUnlocks:
-  - WeaponLauncherHydra
+  - FishWeaponLauncherHydraCleanade
   - GrenadeCleanade
   - FishSuperGrenadeCleanade
   - FishSuperCleanade

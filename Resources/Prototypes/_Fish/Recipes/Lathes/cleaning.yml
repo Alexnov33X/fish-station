@@ -1,6 +1,6 @@
-﻿- type: latheRecipe
-  id: WeaponLauncherHydra
-  result: WeaponLauncherHydra
+- type: latheRecipe
+  id: FishWeaponLauncherHydraCleanade
+  result: FishWeaponLauncherHydraCleanade
   completetime: 8
   materials:
     Steel: 3000
@@ -42,7 +42,7 @@
 - type: latheRecipePack
   id: JanitorAdvancedFish
   recipes:
-  - WeaponLauncherHydra
+  - FishWeaponLauncherHydraCleanade
   - GrenadeCleanade
   - FishSuperGrenadeCleanade
   - FishSuperCleanade
