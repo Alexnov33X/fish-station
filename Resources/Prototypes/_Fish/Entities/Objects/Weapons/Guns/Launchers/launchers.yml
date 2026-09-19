@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseWeaponLauncher
   id: FishWeaponLauncherHydraCleanade
   name: hydra grenade launcher (civilian)
@@ -22,6 +22,7 @@
     containers:
       revolver-ammo: !type:Container
   - type: RevolverAmmoProvider
+    proto: null
     capacity: 6
     chambers: [ False, False, False, False, False, False ]
     ammoSlots: [ null, null, null, null, null, null ]

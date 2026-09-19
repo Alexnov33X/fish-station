@@ -1,11 +1,8 @@
 using Content.Shared._Fish.Fluids.Components;
 using Content.Server.Light.EntitySystems;
-using Content.Shared.Item;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Tag;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Fish.Fluids.EntitySystems;
@@ -17,10 +14,10 @@ namespace Content.Server._Fish.Fluids.EntitySystems;
 /// </summary>
 public sealed class SuperCleanFoamSystem : EntitySystem
 {
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedLightBulbSystem _bulb = default!;
-    [Dependency] private readonly PoweredLightSystem _poweredLight = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedLightBulbSystem _bulb = default!;
+    [Dependency] private PoweredLightSystem _poweredLight = default!;
 
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
@@ -44,8 +41,8 @@ public sealed class SuperCleanFoamSystem : EntitySystem
         var xform = Transform(foamUid);
         var coords = xform.Coordinates;
 
-        // Радиус 0.7f охватывает тайл, на котором находится пена
-        var entities = _lookup.GetEntitiesInRange(coords, 0.7f);
+        // Радиус 1.0f охватывает тайл, на котором находится пена
+        var entities = _lookup.GetEntitiesInRange(coords, 1.0f);
 
         foreach (var entity in entities)
         {
