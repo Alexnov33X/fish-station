@@ -496,6 +496,7 @@
     anchored: true
   - type: Physics
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   #- type: Slippery
    # launchForwardsMultiplier: 0.1
@@ -740,6 +741,7 @@
     sprite: Objects/Tools/fulton.rsi
     state: extraction_pack
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -1512,18 +1514,16 @@
   id: DrinkMREFlaskWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: WaterPW
         Quantity: 1
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 100
-        reagents:
-        - ReagentId: WaterPW
-          Quantity: 100
+  - type: Solution
+    solution:
+      maxVol: 100
+      reagents:
+      - ReagentId: WaterPW
+        Quantity: 100
   - type: PhysicalComposition
     materialComposition:
       MoneyWarMizMaterial: 200
@@ -1535,18 +1535,16 @@
   id: BucketWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: WaterPW
         Quantity: 0.1
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 2000
-        reagents:
-        - ReagentId: WaterPW
-          Quantity: 2000
+  - type: Solution
+    solution:
+      maxVol: 2000
+      reagents:
+      - ReagentId: WaterPW
+        Quantity: 2000
   - type: PhysicalComposition
     materialComposition:
       MoneyWarMizMaterial: 200
@@ -2915,7 +2913,6 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: EpinephrinePW
@@ -2924,13 +2921,12 @@
     damageCoefficient: 0.00001
   - type: Label
     currentLabel: Эпинефрен
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 80
-        reagents:
-        - ReagentId: EpinephrinePW
-          Quantity: 80
+  - type: Solution
+    solution:
+      maxVol: 80
+      reagents:
+      - ReagentId: EpinephrinePW
+        Quantity: 80
   - type: Destructible
     thresholds:
     - trigger:
@@ -2953,7 +2949,6 @@
   parent: ChemistryBottlePuncturaseWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: BicaridinePW
@@ -2964,15 +2959,14 @@
     damageCoefficient: 0.00001
   - type: Label
     currentLabel: Бикаридин-Пункта
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 200
-        reagents:
-        - ReagentId: BicaridinePW
-          Quantity: 150
-        - ReagentId: PuncturasePW
-          Quantity: 50
+  - type: Solution
+    solution:
+      maxVol: 200
+      reagents:
+      - ReagentId: BicaridinePW
+        Quantity: 150
+      - ReagentId: PuncturasePW
+        Quantity: 50
 
 
 - type: entity
@@ -2981,7 +2975,6 @@
   parent: ChemistryBottlePuncturaseWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: TricordrazinePW
@@ -2992,15 +2985,14 @@
     damageCoefficient: 0.00001
   - type: Label
     currentLabel: Трикомет
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 200
-        reagents:
-        - ReagentId: TricordrazinePW
-          Quantity: 50
-        - ReagentId: StimulantsPW
-          Quantity: 50
+  - type: Solution
+    solution:
+      maxVol: 200
+      reagents:
+      - ReagentId: TricordrazinePW
+        Quantity: 50
+      - ReagentId: StimulantsPW
+        Quantity: 50
 
 
 - type: entity
@@ -3009,7 +3001,6 @@
   parent: ChemistryBottlePuncturaseWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: DermalinePW
@@ -3018,13 +3009,12 @@
     damageCoefficient: 0.00001
   - type: Label
     currentLabel: Дермалин
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 100
-        reagents:
-        - ReagentId: DermalinePW
-          Quantity: 100
+  - type: Solution
+    solution:
+      maxVol: 100
+      reagents:
+      - ReagentId: DermalinePW
+        Quantity: 100
 
 
 - type: entity
@@ -3033,7 +3023,6 @@
   parent: ChemistryBottlePuncturaseWM
   components:
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: EZNutrientPW
@@ -3042,13 +3031,12 @@
     damageCoefficient: 0.00001
   - type: Label
     currentLabel: EZNutrient
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 100
-        reagents:
-        - ReagentId: EZNutrientPW
-          Quantity: 100
+  - type: Solution
+    solution:
+      maxVol: 100
+      reagents:
+      - ReagentId: EZNutrientPW
+        Quantity: 100
 
 
 - type: entity
@@ -3457,8 +3445,9 @@
  #   shape: Square
  #   requireInSpace: false
   - type: Damageable
-    damageContainer: RockdamageContainer
     damageModifierSet: RockWM
+  - type: Injurable
+    damageContainer: RockdamageContainer
   - type: Pierceable
     level: HardenedMetal
   - type: Ricochetable
@@ -3483,8 +3472,9 @@
   parent: WallRockSnow
   components:
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: RockWM
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Pierceable
     level: HardenedMetal
   - type: Ricochetable
@@ -3498,8 +3488,9 @@
   abstract: true
   components:
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: TreeWM
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Pierceable
     level: HardenedMetal
   - type: Ricochetable
@@ -3914,6 +3905,7 @@
         enum.ResearchClientUiKey.Key:
           type: ResearchClientBoundUserInterface
     - type: Damageable
+    - type: Injurable
       damageContainer: Inorganic
     - type: TimedSpawner
       chance: 1
