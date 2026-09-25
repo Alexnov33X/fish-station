@@ -11,6 +11,7 @@
   components:
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
+    antags: [] # Sunrise-Edit: пустой список, дочерние сущности переопределяют его
 
 - type: entity
   parent: BaseGameRule
@@ -141,6 +142,7 @@
   - type: NukeopsRule
   - type: RuleGrids
   - type: AntagSelection
+    antags: [] # Sunrise-Edit: пустой список, Nukeops переопределяет
   - type: AntagLoadProfileRule
     speciesOverride: Human
     speciesOverrideBlacklist:
@@ -198,6 +200,7 @@
     maxDifficulty: 6 # Sunrise-Edit
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
+    antags: [] # Sunrise-Edit: пустой список, Traitor переопределяет
   - type: DynamicRuleCost
     cost: 100
 
