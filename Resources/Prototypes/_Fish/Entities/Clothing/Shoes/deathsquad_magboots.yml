@@ -17,8 +17,8 @@
       volume: 10
       temperature: 293.15
       moles:
-        - 10 # oxygen
-        - 0 # nitrogen
+        Oxygen: 1.0 # oxygen
+        Nitrogen: 0.0 # nitrogen
     tankLowPressure: 30.0
   - type: Tag
     tags:
