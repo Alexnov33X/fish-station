@@ -6,6 +6,7 @@ ent-MobKitsunePlayerFox = Девятихвостая лиса
 ent-MacKitsune = Урист МакКицунэ
 
 ent-MobKitsunePrime = Прайм-Кицунэ
+    .desc = { "" }
     .suffix = АДМЕМЫ
 
 ent-ActionKitsuneTransform = Трансформация в лису

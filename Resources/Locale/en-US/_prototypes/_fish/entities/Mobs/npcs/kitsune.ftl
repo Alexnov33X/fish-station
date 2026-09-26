@@ -7,6 +7,7 @@ ent-MobKitsunePlayerFox = kitsune fox
 ent-MacKitsune = Urist McKitsune
 
 ent-MobKitsunePrime = prime kitsune
+    .desc = { "" }
     .suffix = ADMEME
 
 ent-ActionKitsuneTransform = Fox Transform
