@@ -4,7 +4,6 @@
   name: empty water bottle
   description: A reusable plastic bottle with no contents.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
+  - type: Solution
+    solution:
+      maxVol: 30

@@ -11,7 +11,7 @@
     prototype: RevolutionarySmugglerStash
 
 - type: entity
-  parent: BaseAntagGhostRoleRule
+  parent: BaseGameRule
   id: DiseaseSpawn
   categories: [ HideSpawnMenu ]
   components:
