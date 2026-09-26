@@ -11,7 +11,7 @@ namespace Content.Server._Fish.PlanetWar;
 /// <summary>
 /// Sunrise-style GameRule для PlanetWar: старт объявления, победа по уничтожению врат, текст конца раунда.
 /// </summary>
-public sealed class PlanetWarRuleSystem : GameRuleSystem<PlanetWarRuleComponent>
+public sealed partial class PlanetWarRuleSystem : GameRuleSystem<PlanetWarRuleComponent>
 {
     [Dependency] private ChatSystem _chat = default!;
 

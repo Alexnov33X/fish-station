@@ -20,7 +20,7 @@ namespace Content.Server._Sunrise.BluespaceArtillery;
 /// <summary>
 /// Серверная логика наведения и запуска блюспейс-артиллерии.
 /// </summary>
-public sealed class BluespaceArtilleryDesignatorSystem : SharedBluespaceArtilleryDesignatorSystem
+public sealed partial class BluespaceArtilleryDesignatorSystem : SharedBluespaceArtilleryDesignatorSystem
 {
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private ExplosionSystem _explosion = default!;

@@ -9,7 +9,7 @@ using System.Linq;
 namespace Content.Server.Administration.Commands;
 
 [AdminCommand(AdminFlags.Fun)]
-public sealed class StopGlobalAdminSoundCommand : IConsoleCommand
+public sealed partial class StopGlobalAdminSoundCommand : IConsoleCommand
 {
     [Dependency] private IEntityManager _entManager = default!;
     [Dependency] private IPlayerManager _playerManager = default!;

@@ -8,7 +8,7 @@ namespace Content.Server._Fish.PlanetWar;
 /// <summary>
 /// Показывает настраиваемый брифинг при добавлении разума (гост-роль PlanetWar).
 /// </summary>
-public sealed class PlanetWarBriefingSystem : EntitySystem
+public sealed partial class PlanetWarBriefingSystem : EntitySystem
 {
     [Dependency] private AntagSelectionSystem _antag = default!;
 
