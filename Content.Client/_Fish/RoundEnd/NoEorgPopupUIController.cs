@@ -7,7 +7,7 @@ namespace Content.Client._Fish.RoundEnd
 {
     public sealed class NoEorgPopupUIController : UIController, IOnStateEntered<LobbyState>
     {
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
 
         private NoEorgPopup? _window;
 

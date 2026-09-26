@@ -10,7 +10,7 @@ namespace Content.Server._Fish.PlanetWar;
 /// </summary>
 public sealed class PlanetWarBriefingSystem : EntitySystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
 
     public override void Initialize()
     {

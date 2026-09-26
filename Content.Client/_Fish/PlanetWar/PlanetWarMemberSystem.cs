@@ -9,7 +9,7 @@ namespace Content.Client._Fish.PlanetWar;
 /// </summary>
 public sealed class PlanetWarMemberSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {

@@ -13,7 +13,7 @@ namespace Content.Server._Fish.PlanetWar;
 /// </summary>
 public sealed class PlanetWarRuleSystem : GameRuleSystem<PlanetWarRuleComponent>
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public override void Initialize()
     {
