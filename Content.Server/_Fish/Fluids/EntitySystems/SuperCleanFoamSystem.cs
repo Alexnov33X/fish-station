@@ -49,48 +49,7 @@ public sealed class SuperCleanFoamSystem : EntitySystem
             if (entity == foamUid || TerminatingOrDeleted(entity))
                 continue;
 
-            // 1. Проверяем светильники с PoweredLightComponent: заменяем сломанную лампочку или вставляем новую, если отсутствует
-            if (TryComp<PoweredLightComponent>(entity, out var poweredLight))
-            {
-                var bulbUid = _poweredLight.GetBulb(entity, poweredLight);
-                var needsReplacement = false;
-                if (bulbUid == null)
-                {
-                    needsReplacement = true;
-                }
-                else if (TryComp<LightBulbComponent>(bulbUid.Value, out var bulb) && bulb.State != LightBulbState.Normal)
-                {
-                    needsReplacement = true;
-                }
-
-                if (needsReplacement)
-                {
-                    var bulbProto = poweredLight.BulbType == LightBulbType.Tube ? "LightTube" : "LightBulb";
-                    var newBulb = Spawn(bulbProto, coords);
-                    if (bulbUid != null)
-                    {
-                        // Если была разбитая лампочка, заменяем её и удаляем старую
-                        _poweredLight.ReplaceBulb(entity, newBulb, poweredLight);
-                        QueueDel(bulbUid.Value);
-                    }
-                    else
-                    {
-                        // Если гнездо было пустым, вставляем новую лампочку
-                        _poweredLight.InsertBulb(entity, newBulb, poweredLight);
-                    }
-                }
-            }
-
-            // 2. Проверяем свободно лежащие на полу лампочки
-            if (TryComp<LightBulbComponent>(entity, out var looseBulb))
-            {
-                if (looseBulb.State != LightBulbState.Normal)
-                {
-                    _bulb.SetState(entity, LightBulbState.Normal, looseBulb);
-                }
-            }
-
-            // 3. Удаление мусора (тег Trash, незакрепленный мусор, автоматически собираемый мешком)
+            // Удаление мусора (тег Trash, незакрепленный мусор, автоматически собираемый мешком)
             if (_tag.HasTag(entity, TrashTag))
             {
                 var targetXform = Transform(entity);
