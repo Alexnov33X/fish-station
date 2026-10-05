@@ -870,6 +870,7 @@
   - StationEngineerHardhatYellow
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
+  - SeniorEngineerBeret # Fish-edit
 
 - type: loadoutGroup
   id: StationEngineerJumpsuit
