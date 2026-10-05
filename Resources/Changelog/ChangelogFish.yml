@@ -774,3 +774,10 @@
     message: Вместимость золотой мензурки повышена до 180
   id: 76
   url: https://github.com/makura-games/fish-station/pull/480
+- author: KrytoiChuvaaak
+  time: '2026-10-05T22:26:03.0000000+00:00'
+  changes:
+  - type: Tweak
+    message: Вещи ведущих ролей (береты, халаты, КПК, пояс ведущего врача) теперь доступны обычным сотрудникам отдела после открытия ведущей роли.
+  id: 77
+  url: https://github.com/makura-games/fish-station/pull/482
