@@ -1,2 +1,2 @@
-ent-ClothingMaskClownSpooky = жуткая маска клоуна
-    .desc = эта старая маска выглядит очень пугающе.
+ent-FishClothingMaskClownSpooky = жуткая маска клоуна
+    .desc = Эта старая маска выглядит очень пугающе.

@@ -1,2 +1,2 @@
-ent-ClothingUniformJumpsuitClownSpooky = spooky clown suit
+ent-FishClothingUniformJumpsuitClownSpooky = spooky clown suit
     .desc = This old suit looks very scary.

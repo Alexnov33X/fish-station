@@ -1,7 +1,8 @@
 # Fish added start - Spooky clown mask
 - type: entity
   parent: ClothingMaskClownBase
-  id: ClothingMaskClownSpooky
+  id: FishClothingMaskClownSpooky
+  suffix: ADMEME
   name: spooky clown mask
   description: This old mask looks very scary.
   components:
