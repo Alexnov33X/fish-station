@@ -781,3 +781,17 @@
     message: Вещи ведущих ролей (береты, халаты, КПК, пояс ведущего врача) теперь доступны обычным сотрудникам отдела после открытия ведущей роли.
   id: 77
   url: https://github.com/makura-games/fish-station/pull/482
+- author: Kaiten
+  time: '2026-10-06T07:33:03.0000000+00:00'
+  changes:
+  - type: Add
+    message: Костюм клоуна для ивента.
+  id: 78
+  url: https://github.com/makura-games/fish-station/pull/484
+- author: dan4ikk3
+  time: '2026-10-06T12:23:13.0000000+00:00'
+  changes:
+  - type: Fix
+    message: Исправлена возможность стрелять из своего оружия находясь в мехе
+  id: 79
+  url: https://github.com/makura-games/fish-station/pull/485
