@@ -484,6 +484,7 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
         if (entity.Comp.TargetMajorEvent != null &&
             !entity.Comp.TargetMajorTriggered &&
             roundDuration >= TimeSpan.FromHours(1) &&
+            entity.Comp.PacingState == StorytellerPacingState.Peak &&
             entity.Comp.StorytellerType is StorytellerType.Classic or StorytellerType.Insane)
         {
             var targetId = entity.Comp.TargetMajorEvent.Value.Id;
