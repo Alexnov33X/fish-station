@@ -96,7 +96,11 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
     private static readonly ProtoId<TagPrototype> StorytellerIgnoreMessTag = "StorytellerIgnoreMess";
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
-    // Fish-start - константы событий поднятия силы станции
+    // Fish-start - константы событий поднятия силы станции и правил взаимного исключения
+    private const string AssaultOpsRuleId = "AssaultOps";
+    private const string NukeopsRuleId = "Nukeops";
+    private const string LoneOpsSpawnRuleId = "LoneOpsSpawn";
+
     private static readonly TimeSpan StrengthBoostingEventCooldown = TimeSpan.FromMinutes(5);
     private static readonly string[] StrengthBoostingEvents =
     [
@@ -1213,16 +1217,8 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
                 continue;
 
             // Fish-start - взаимное исключение AssaultOps vs Nukeops / LoneOpsSpawn
-            if (proto.ID == "AssaultOps")
-            {
-                if (IsMajorRuleExecutedOrActive("Nukeops") || IsMajorRuleExecutedOrActive("LoneOpsSpawn"))
-                    continue;
-            }
-            else if (proto.ID is "Nukeops" or "LoneOpsSpawn")
-            {
-                if (IsMajorRuleExecutedOrActive("AssaultOps"))
-                    continue;
-            }
+            if (IsTargetMajorPermanentlyDisallowed(proto.ID))
+                continue;
             // Fish-end
 
             if (metadata.ThreatType == StorytellerThreatType.Helpful)
@@ -2349,14 +2345,8 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
             if (metadata.ThreatType != StorytellerThreatType.MajorAntag)
                 continue;
 
-            // Проверяем запреты по истории правил
-            if (proto.ID == "AssaultOps" && (IsMajorRuleExecutedOrActive("Nukeops") || IsMajorRuleExecutedOrActive("LoneOpsSpawn")))
-                continue;
-
-            if (proto.ID is "Nukeops" or "LoneOpsSpawn" && IsMajorRuleExecutedOrActive("AssaultOps"))
-                continue;
-
-            if (GameTicker.IsGameRuleActive(proto.ID))
+            // Проверяем запреты по истории правил и активности
+            if (IsTargetMajorPermanentlyDisallowed(proto.ID))
                 continue;
 
             candidates.Add((new EntProtoId(proto.ID), metadata.ThreatCost));
@@ -2367,13 +2357,13 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
 
     private bool IsTargetMajorPermanentlyDisallowed(string targetId)
     {
-        if (targetId == "AssaultOps" && (IsMajorRuleExecutedOrActive("Nukeops") || IsMajorRuleExecutedOrActive("LoneOpsSpawn")))
+        if (targetId == AssaultOpsRuleId && (IsMajorRuleExecutedOrActive(NukeopsRuleId) || IsMajorRuleExecutedOrActive(LoneOpsSpawnRuleId)))
             return true;
 
-        if (targetId is "Nukeops" or "LoneOpsSpawn" && IsMajorRuleExecutedOrActive("AssaultOps"))
+        if ((targetId == NukeopsRuleId || targetId == LoneOpsSpawnRuleId) && IsMajorRuleExecutedOrActive(AssaultOpsRuleId))
             return true;
 
-        if (GameTicker.IsGameRuleActive(targetId))
+        if (IsMajorRuleExecutedOrActive(targetId))
             return true;
 
         return false;
