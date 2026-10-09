@@ -293,11 +293,14 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
 
             // Излишек, если буфер заполнился, возвращается в общий пул
             var overflow = targetBufferInc - actualTargetInc;
-            component.MajorThreatBudget = MathF.Min(maxBudget, component.MajorThreatBudget + generalMajorInc + overflow);
+            var addedBudget = generalMajorInc + overflow;
+            if (component.MajorThreatBudget < maxBudget)
+                component.MajorThreatBudget = MathF.Min(maxBudget, component.MajorThreatBudget + addedBudget);
         }
         else
         {
-            component.MajorThreatBudget = MathF.Min(maxBudget, component.MajorThreatBudget + majorInc);
+            if (component.MajorThreatBudget < maxBudget)
+                component.MajorThreatBudget = MathF.Min(maxBudget, component.MajorThreatBudget + majorInc);
         }
         // Fish-end
 
@@ -1218,7 +1221,7 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
                 continue;
 
             // Fish-start - взаимное исключение AssaultOps vs Nukeops / LoneOpsSpawn
-            if (IsTargetMajorPermanentlyDisallowed(proto.ID))
+            if (metadata.ThreatType == StorytellerThreatType.MajorAntag && IsTargetMajorPermanentlyDisallowed(proto.ID))
                 continue;
             // Fish-end
 
