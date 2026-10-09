@@ -96,6 +96,17 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
     private static readonly ProtoId<TagPrototype> StorytellerIgnoreMessTag = "StorytellerIgnoreMess";
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
+    // Fish-start - константы событий поднятия силы станции
+    private static readonly TimeSpan StrengthBoostingEventCooldown = TimeSpan.FromMinutes(5);
+    private static readonly string[] StrengthBoostingEvents =
+    [
+        "GiftsSecurityGuns",
+        "GiftsSecurityRiot",
+        "GiftsEngineering",
+        "GiftsSpacingSupplies",
+    ];
+    // Fish-end
+
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private DamageableSystem _damageableSystem = default!;
     [Dependency] private IPrototypeManager _protoManager = default!;
@@ -2344,29 +2355,38 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
 
     private bool TryTriggerStrengthBoostingEvent(Entity<StorytellerRuleComponent> entity, StationMetrics metrics)
     {
-        // События, повышающие силу станции (вооружение, экипировка, материалы)
-        var strengthBoostingEvents = new[] { "GiftsSecurityGuns", "GiftsSecurityRiot", "GiftsEngineering", "GiftsSpacingSupplies" };
-        var availableBoosters = new List<(EntityPrototype proto, StorytellerMetadataPrototype meta)>();
+        // Проверка 5-минутного кулдауна на усиливающие события
+        if (Timing.CurTime - entity.Comp.LastStrengthBoostingEventTime < StrengthBoostingEventCooldown)
+            return false;
 
-        foreach (var eventId in strengthBoostingEvents)
+        // Проверка глобального кулдауна между событиями
+        if (Timing.CurTime - entity.Comp.LastAnyEventTime < TimeSpan.FromMinutes(entity.Comp.GlobalEventCooldownMinutes))
+            return false;
+
+        // Фильтрация событий через общий пайплайн (учитывает количество игроков, recurrence delay, max occurrences, лимиты стресса)
+        var eligibleEvents = GetEligibleHeuristicEvents(entity.Comp, metrics, isMajor: false);
+        var availableBoosters = new Dictionary<EntityPrototype, StorytellerMetadataPrototype>();
+
+        foreach (var (proto, meta) in eligibleEvents)
         {
-            if (!_protoManager.TryIndex<EntityPrototype>(eventId, out var proto))
-                continue;
-
-            if (!_protoManager.TryIndex<StorytellerMetadataPrototype>(eventId, out var metadata))
-                continue;
-
-            if (GameTicker.IsGameRuleActive(proto.ID))
-                continue;
-
-            availableBoosters.Add((proto, metadata));
+            if (StrengthBoostingEvents.Contains(proto.ID))
+            {
+                availableBoosters.Add(proto, meta);
+            }
         }
 
         if (availableBoosters.Count == 0)
             return false;
 
-        var chosen = _random.Pick(availableBoosters);
-        TriggerEvent(entity, chosen.proto, chosen.meta);
+        var selected = PickEventFromEligible(availableBoosters);
+        if (selected == null)
+            return false;
+
+        TriggerEvent(entity, selected.Value.Item1, selected.Value.Item2);
+
+        // Блокируем major-слот кулдауном и обновляем таймер усиливающего события
+        entity.Comp.LastMajorEventTime = Timing.CurTime;
+        entity.Comp.LastStrengthBoostingEventTime = Timing.CurTime;
         return true;
     }
     // Fish-end

@@ -58,6 +58,12 @@ public sealed partial class StorytellerRuleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool TargetMajorTriggered = false;
+
+    /// <summary>
+    /// Last timestamp when a station strength boosting event was triggered.
+    /// </summary>
+    [AutoPausedField, ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan LastStrengthBoostingEventTime;
     // Fish-end
 
     /// <summary>
