@@ -483,16 +483,30 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
             entity.Comp.StorytellerType is StorytellerType.Classic or StorytellerType.Insane)
         {
             var targetId = entity.Comp.TargetMajorEvent.Value.Id;
-            if (_protoManager.TryIndex<StorytellerMetadataPrototype>(targetId, out var targetMeta))
+            if (!_protoManager.TryIndex<EntityPrototype>(targetId, out var targetProto) ||
+                !_protoManager.TryIndex<StorytellerMetadataPrototype>(targetId, out var targetMeta))
+            {
+                ReassignOrRefundTargetMajor(entity.Comp);
+            }
+            else if (IsTargetMajorPermanentlyDisallowed(targetId))
+            {
+                // Если цель окончательно заблокирована историей событий (например, взаимное исключение правил)
+                ReassignOrRefundTargetMajor(entity.Comp);
+            }
+            else
             {
                 var combinedBudget = entity.Comp.MajorThreatBudget + entity.Comp.TargetMajorBudget;
                 if (combinedBudget >= targetMeta.ThreatCost)
                 {
-                    // Если силы станции не хватает для целевого антагониста - запускаем укрепляющие события
-                    if (metrics.StationStrength < targetMeta.MinStationStrength)
+                    // Проверяем все остальные ограничения цели (игроки, лимиты, стресс) кроме силы станции
+                    if (IsTargetMajorEligibleExceptStrength(targetProto, targetMeta, entity.Comp, metrics))
                     {
-                        if (TryTriggerStrengthBoostingEvent(entity, metrics))
-                            return;
+                        // Если силы станции не хватает для целевого антагониста - запускаем укрепляющие события
+                        if (metrics.StationStrength < targetMeta.MinStationStrength)
+                        {
+                            if (TryTriggerStrengthBoostingEvent(entity, metrics))
+                                return;
+                        }
                     }
                 }
             }
@@ -2309,21 +2323,7 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
     // Fish-start - вспомогательные методы для целевого антагониста, взаимоисключений и поднятия силы станции
     private void InitializeTargetMajorEvent(StorytellerRuleComponent comp)
     {
-        var majorCandidates = new List<(EntProtoId id, float cost)>();
-        foreach (var proto in _protoManager.EnumeratePrototypes<EntityPrototype>())
-        {
-            if (proto.Abstract)
-                continue;
-
-            if (!_protoManager.TryIndex<StorytellerMetadataPrototype>(proto.ID, out var metadata))
-                continue;
-
-            if (metadata.ThreatType == StorytellerThreatType.MajorAntag)
-            {
-                majorCandidates.Add((new EntProtoId(proto.ID), metadata.ThreatCost));
-            }
-        }
-
+        var majorCandidates = GetEligibleTargetMajorCandidates(comp);
         if (majorCandidates.Count == 0)
             return;
 
@@ -2333,6 +2333,130 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
         comp.TargetMajorBudget = 0f;
         comp.TargetMajorTriggered = false;
         Log.Info($"Storyteller selected {selected.id} as TargetMajorEvent with cost {selected.cost}");
+    }
+
+    private List<(EntProtoId id, float cost)> GetEligibleTargetMajorCandidates(StorytellerRuleComponent comp)
+    {
+        var candidates = new List<(EntProtoId id, float cost)>();
+        foreach (var proto in _protoManager.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (proto.Abstract)
+                continue;
+
+            if (!_protoManager.TryIndex<StorytellerMetadataPrototype>(proto.ID, out var metadata))
+                continue;
+
+            if (metadata.ThreatType != StorytellerThreatType.MajorAntag)
+                continue;
+
+            // Проверяем запреты по истории правил
+            if (proto.ID == "AssaultOps" && (IsMajorRuleExecutedOrActive("Nukeops") || IsMajorRuleExecutedOrActive("LoneOpsSpawn")))
+                continue;
+
+            if (proto.ID is "Nukeops" or "LoneOpsSpawn" && IsMajorRuleExecutedOrActive("AssaultOps"))
+                continue;
+
+            if (GameTicker.IsGameRuleActive(proto.ID))
+                continue;
+
+            candidates.Add((new EntProtoId(proto.ID), metadata.ThreatCost));
+        }
+
+        return candidates;
+    }
+
+    private bool IsTargetMajorPermanentlyDisallowed(string targetId)
+    {
+        if (targetId == "AssaultOps" && (IsMajorRuleExecutedOrActive("Nukeops") || IsMajorRuleExecutedOrActive("LoneOpsSpawn")))
+            return true;
+
+        if (targetId is "Nukeops" or "LoneOpsSpawn" && IsMajorRuleExecutedOrActive("AssaultOps"))
+            return true;
+
+        if (GameTicker.IsGameRuleActive(targetId))
+            return true;
+
+        return false;
+    }
+
+    private bool IsTargetMajorEligibleExceptStrength(EntityPrototype proto, StorytellerMetadataPrototype metadata, StorytellerRuleComponent comp, StationMetrics metrics)
+    {
+        // Calm никогда не спавнит MajorAntag
+        if (comp.StorytellerType == StorytellerType.Calm)
+            return false;
+
+        // Взаимные исключения правил
+        if (IsTargetMajorPermanentlyDisallowed(proto.ID))
+            return false;
+
+        // Стресс команды
+        if (comp.CrewStress > metadata.MaxStress)
+            return false;
+
+        // Минимальное число игроков для правила
+        if (proto.TryGetComponent<GameRuleComponent>(out var gameRuleComp, EntityManager.ComponentFactory))
+        {
+            if (metrics.TotalPlayers < gameRuleComp.MinPlayers)
+                return false;
+        }
+
+        // Параметры события станции
+        if (proto.TryGetComponent<StationEventComponent>(out var stationEvent, EntityManager.ComponentFactory))
+        {
+            if (metrics.TotalPlayers < stationEvent.MinimumPlayers)
+                return false;
+
+            var currentDuration = GameTicker.RoundDuration();
+            if (currentDuration.TotalMinutes < stationEvent.EarliestStart)
+                return false;
+
+            var lastTime = _eventManager.TimeSinceLastEvent(proto);
+            if (lastTime != TimeSpan.Zero && currentDuration.TotalMinutes < stationEvent.ReoccurrenceDelay + lastTime.TotalMinutes)
+                return false;
+
+            if (stationEvent.MaxOccurrences.HasValue)
+            {
+                var occurrences = GameTicker.AllPreviousGameRules.Count(p => p.Item2 == proto.ID);
+                if (occurrences >= stationEvent.MaxOccurrences.Value)
+                    return false;
+            }
+
+            if (_roundEnd.IsRoundEndRequested() && !stationEvent.OccursDuringRoundEnd)
+                return false;
+        }
+
+        return true;
+    }
+
+    private void ReassignOrRefundTargetMajor(StorytellerRuleComponent comp)
+    {
+        var candidates = GetEligibleTargetMajorCandidates(comp);
+        // Исключаем текущую недоступную цель
+        candidates.RemoveAll(c => c.id == comp.TargetMajorEvent);
+
+        if (candidates.Count > 0)
+        {
+            var selected = _random.Pick(candidates);
+            comp.TargetMajorEvent = selected.id;
+            comp.TargetMajorCost = selected.cost;
+            // Переносим накопленный резерв, с ограничением по стоимости новой цели
+            if (comp.TargetMajorBudget > comp.TargetMajorCost)
+            {
+                var overflow = comp.TargetMajorBudget - comp.TargetMajorCost;
+                comp.TargetMajorBudget = comp.TargetMajorCost;
+                comp.MajorThreatBudget += overflow;
+            }
+            Log.Info($"Storyteller re-targeted to {selected.id} with cost {selected.cost}, retained buffer {comp.TargetMajorBudget}");
+        }
+        else
+        {
+            // Если доступных целей больше нет, возвращаем весь буфер в общий бюджет
+            comp.MajorThreatBudget += comp.TargetMajorBudget;
+            comp.TargetMajorBudget = 0f;
+            comp.TargetMajorCost = 0f;
+            comp.TargetMajorEvent = null;
+            Log.Info("Storyteller found no eligible target majors; refunded target buffer to MajorThreatBudget.");
+        }
     }
 
     private bool IsMajorRuleExecutedOrActive(string ruleId)
