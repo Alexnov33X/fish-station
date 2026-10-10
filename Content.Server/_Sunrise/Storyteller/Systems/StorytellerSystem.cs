@@ -284,8 +284,8 @@ public sealed partial class StorytellerSystem : GameRuleSystem<StorytellerRuleCo
         var majorInc = baseInc * stressModifier;
         if (component.TargetMajorEvent != null && !component.TargetMajorTriggered && component.TargetMajorBudget < component.TargetMajorCost)
         {
-            var targetBufferInc = majorInc * 0.25f;
-            var generalMajorInc = majorInc * 0.75f;
+            var targetBufferInc = majorInc * 0.2f;
+            var generalMajorInc = majorInc * 0.8f;
 
             var needed = component.TargetMajorCost - component.TargetMajorBudget;
             var actualTargetInc = MathF.Min(needed, targetBufferInc);
