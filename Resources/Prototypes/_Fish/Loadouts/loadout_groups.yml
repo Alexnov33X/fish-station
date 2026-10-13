@@ -99,15 +99,29 @@
   - OversightSatchelWithStampFish
 
 - type: loadoutGroup
+  id: SpecOpsBackFish
+  name: loadout-group-centcomm-back
+  loadouts:
+  - SpecOpsModsuitERTLeader
+
+- type: loadoutGroup
   id: CentCommOperatorEyesFish
   name: loadout-group-centcomm-eyes
   loadouts:
   - CentCommSunglasses
   - CentCommAdminGlasses
+  - SpecOpsGlassesBlueShield
 
 - type: loadoutGroup
   id: CentCommOperatorWeaponsFish
   name: loadout-group-centcomm-weapons
   loadouts:
   - CentcommSwordFish
+
+- type: loadoutGroup
+  id: SpecOpsWeaponsFish
+  name: loadout-group-centcomm-weapons
+  loadouts:
+  - SpecOpsWeaponPistolDeagle
+
 

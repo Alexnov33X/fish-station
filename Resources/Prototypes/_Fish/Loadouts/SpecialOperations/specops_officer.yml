@@ -1,4 +1,13 @@
 
+- type: loadoutEffectGroup
+  id: SpecOps10h
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSpecOpsOfficer
+      time: 10h
+
 - type: loadout
   id: SpecOpsOfficerUniformMale
   effects:
@@ -14,3 +23,31 @@
     proto: SpecOpsOnly
   equipment:
     jumpsuit: ClothingUniformJumpskirtCentcomOfficerBlack
+
+# --- Weapons ---
+- type: loadout
+  id: SpecOpsWeaponPistolDeagle
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOps10h
+  equipment:
+    pocket1: WeaponPistolDeagle
+
+# --- Back ---
+- type: loadout
+  id: SpecOpsModsuitERTLeader
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOps10h
+  equipment:
+    back: ClothingModsuitERTLeader
+
+# --- Eyes ---
+- type: loadout
+  id: SpecOpsGlassesBlueShield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOps10h
+  equipment:
+    eyes: ClothingEyesGlassesBlueShield
+
