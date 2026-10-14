@@ -66,12 +66,18 @@ public sealed partial class PettingSystem : SharedPettingSystem
     /// Метод, вызываемый, когда игрок изменяет текущий приказ своему питомцу через меню управления
     /// </summary>
     /// <param name="args">Ивент типа PetSetAILogicEvent</param>
-    private void OnClientChangedPetLogic(PetSetAILogicEvent args)
+    /// <param name="sessionArgs">Аргументы сессии отправителя</param>
+    private void OnClientChangedPetLogic(PetSetAILogicEvent args, EntitySessionEventArgs sessionArgs) // Fish-Edit - проверка отправителя
     {
         var entity = GetEntity(args.Entity);
 
         if (!TryComp<PettableOnInteractComponent>(entity, out var component))
             return;
+
+        // Fish-Start - валидация прав хозяина
+        if (!ValidateMaster(component, sessionArgs.SenderSession))
+            return;
+        // Fish-End
 
         Pet((entity, component), ref args);
     }
@@ -93,21 +99,26 @@ public sealed partial class PettingSystem : SharedPettingSystem
     /// Отключение выкидывает игрока из тела, заново включая ИИ
     /// </summary>
     /// <param name="args">Ивент типа PetSetGhostAvaliable</param>
-    private void OnPetGhostAvailable(PetSetGhostAvaliable args)
+    /// <param name="sessionArgs">Аргументы сессии отправителя</param>
+    private void OnPetGhostAvailable(PetSetGhostAvaliable args, EntitySessionEventArgs sessionArgs) // Fish-Edit - проверка отправителя
     {
         var pet = GetEntity(args.Entity);
+
+        // Fish-Start - предотвращение принудительного госта чужих игроков
+        if (!TryComp<PettableOnInteractComponent>(pet, out var petComponent))
+            return;
+
+        if (!ValidateMaster(petComponent, sessionArgs.SenderSession))
+            return;
+
+        var master = petComponent.Master;
+        if (!master.HasValue)
+            return;
+        // Fish-End
 
         // В зависимости того, включаем или отключаем разумность делаем всякое.
         if (args.Enable)
         {
-            if (!TryComp<PettableOnInteractComponent>(pet, out var petComponent))
-                return;
-
-            var master = petComponent.Master;
-
-            if (!master.HasValue)
-                return;
-
             // Получаем сессию хозяина питомца, чтобы открыть ему окно управления
             if (!_player.TryGetSessionByEntity(master.Value, out var masterSession))
                 return;
@@ -124,7 +135,7 @@ public sealed partial class PettingSystem : SharedPettingSystem
             // Убираем компонент гостроли
             RemComp<GhostRoleComponent>(pet);
 
-            // Выкидываем игроки из тела
+            // Выкидываем игрока из тела
             _console.ExecuteCommand(petSession, "ghost");
         }
     }
@@ -133,17 +144,21 @@ public sealed partial class PettingSystem : SharedPettingSystem
     /// Метод, вызываемый при запросе смены имени питомца через меню управления питомца.
     /// </summary>
     /// <param name="args">Ивент типа PetSetName</param>
-    private void OnPetChangeNameRequest(PetSetName args)
+    /// <param name="sessionArgs">Аргументы сессии отправителя</param>
+    private void OnPetChangeNameRequest(PetSetName args, EntitySessionEventArgs sessionArgs) // Fish-Edit - проверка отправителя
     {
         // Получает EntityUid из передаваемого NetEntity
         var pet = GetEntity(args.Entity);
 
-        // Получаем компонент питомца и проверяем, есть ли он
         if (!TryComp<PettableOnInteractComponent>(pet, out var petComponent))
             return;
 
-        var master = petComponent.Master;
+        // Fish-Start - валидация прав хозяина
+        if (!ValidateMaster(petComponent, sessionArgs.SenderSession))
+            return;
+        // Fish-End
 
+        var master = petComponent.Master;
         if (!master.HasValue)
             return;
 
@@ -157,6 +172,16 @@ public sealed partial class PettingSystem : SharedPettingSystem
             Loc.GetString("pet-name-label"),
             (string newName) => Rename(pet, master.Value, newName));
     }
+
+    // Fish-Start - проверка сессии хозяина питомца
+    private bool ValidateMaster(PettableOnInteractComponent petComponent, ICommonSession sender)
+    {
+        if (petComponent.Master is not { } master)
+            return false;
+
+        return _player.TryGetSessionByEntity(master, out var masterSession) && masterSession == sender;
+    }
+    // Fish-End
 
     /// <summary>
     /// Метод, вызываемый при убистве человека.
