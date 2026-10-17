@@ -10,8 +10,8 @@ ent-ClothingOuterRobesSectoralJudgeFish = Мантия Секторальног�
     .desc = Мантия Секторального Суда. Она придаёт огромный авторитет своему владельцу.
     .suffix = Fish
 
-ent-FishClothingOuterArmorSpecOps = Полевая броня ОСО
-    .desc = Полевая броня офицера специальных операций, чтобы обеспечить его сохранность в чрезвычайных проишествиях.
+ent-FishClothingOuterArmorSpecOps = полевая броня спецопераций
+    .desc = Полевая броня офицера специальных операций, предназначенная для защиты в чрезвычайных ситуациях.
     .suffix = Fish
 
 ent-FishClothingOuterHardsuitCentcomBlack = Полевой скафандр скафандр C-115M

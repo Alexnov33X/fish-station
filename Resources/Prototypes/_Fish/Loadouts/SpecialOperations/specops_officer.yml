@@ -1,6 +1,6 @@
 
 - type: loadoutEffectGroup
-  id: SpecOps10h
+  id: FishSpecOps10h
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -26,16 +26,16 @@
 
 # --- Weapons ---
 - type: loadout
-  id: SpecOpsWeaponPistolDeagle
+  id: FishSpecOpsWeaponPistolDeagle
   effects:
   - !type:GroupLoadoutEffect
-    proto: SpecOps10h
+    proto: FishSpecOps10h
   equipment:
     pocket1: WeaponPistolDeagle
 
 # --- Back ---
 - type: loadout
-  id: SpecOpsBackpackCentcomBlackFish
+  id: FishSpecOpsBackpackCentcomBlack
   effects:
   - !type:GroupLoadoutEffect
     proto: SpecOpsOnly
@@ -47,7 +47,7 @@
   id: FishSpecOpsArmor
   effects:
   - !type:GroupLoadoutEffect
-    proto: SpecOps10h
+    proto: FishSpecOps10h
   equipment:
     outerClothing: FishClothingOuterArmorSpecOps
 
@@ -55,16 +55,16 @@
   id: FishSpecOpsCoat
   effects:
   - !type:GroupLoadoutEffect
-    proto: SpecOps10h
+    proto: FishSpecOps10h
   equipment:
     outerClothing: FishClothingOuterCoatSpecOps
 
 # --- Eyes ---
 - type: loadout
-  id: SpecOpsGlassesBlueShield
+  id: FishSpecOpsGlassesBlueShield
   effects:
   - !type:GroupLoadoutEffect
-    proto: SpecOps10h
+    proto: FishSpecOps10h
   equipment:
     eyes: ClothingEyesGlassesBlueShield
 

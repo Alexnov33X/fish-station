@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingOuterArmorTSFLeader
   id: FishClothingOuterArmorSpecOps
-  name: specops officer field armor
+  name: specops field armor
   description: Field armor of a special operations officer, designed to ensure safety during emergencies.
   suffix: Fish
   components:

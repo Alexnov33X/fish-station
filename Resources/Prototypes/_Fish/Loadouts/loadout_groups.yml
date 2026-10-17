@@ -99,10 +99,10 @@
   - OversightSatchelWithStampFish
 
 - type: loadoutGroup
-  id: SpecOpsBackFish
+  id: FishSpecOpsBack
   name: loadout-group-centcomm-back
   loadouts:
-  - SpecOpsBackpackCentcomBlackFish
+  - FishSpecOpsBackpackCentcomBlack
 
 - type: loadoutGroup
   id: SpecOpsOuterClothingFish
@@ -118,7 +118,7 @@
   loadouts:
   - CentCommSunglasses
   - CentCommAdminGlasses
-  - SpecOpsGlassesBlueShield
+  - FishSpecOpsGlassesBlueShield
 
 - type: loadoutGroup
   id: CentCommOperatorWeaponsFish
@@ -127,9 +127,9 @@
   - CentcommSwordFish
 
 - type: loadoutGroup
-  id: SpecOpsWeaponsFish
+  id: FishSpecOpsWeapons
   name: loadout-group-centcomm-weapons
   loadouts:
-  - SpecOpsWeaponPistolDeagle
+  - FishSpecOpsWeaponPistolDeagle
 
 

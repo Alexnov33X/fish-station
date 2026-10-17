@@ -10,7 +10,7 @@ ent-ClothingOuterRobesSectoralJudgeFish = Sectoral Court robe
     .desc = The Sectoral Court robe. It grants immense authority to its wearer.
     .suffix = Fish
 
-ent-FishClothingOuterArmorSpecOps = specops officer field armor
+ent-FishClothingOuterArmorSpecOps = specops field armor
     .desc = Field armor of a special operations officer, designed to ensure safety during emergencies.
     .suffix = Fish
 

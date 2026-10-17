@@ -180,8 +180,8 @@
   - SpecOpsShoesFish
   - SpecOpsGlovesFish
   - SpecOpsOuterClothingFish
-  - SpecOpsBackFish
-  - SpecOpsWeaponsFish
+  - FishSpecOpsBack
+  - FishSpecOpsWeapons
   - Trinkets
   - Survival
   - GroupSpeciesBreathTool
