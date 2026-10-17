@@ -270,7 +270,6 @@
   id: BulletLeviathan240mmHESelfExplode
   name: 240mm HE shell
   suffix: self-explode, NOW, FISH
-  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
