@@ -9,7 +9,10 @@
 - type: species
   id: Vulpkanin
   name: species-name-vulpkanin
-  roundStart: true
+# Fish edit start - временное отключение расы Vulpkanin
+#  roundStart: true
+  roundStart: false
+# Fish edit end
   prototype: MobVulpkanin
   bodyTypes: # Sunrise-Edit
   - VulpkaninNormal
