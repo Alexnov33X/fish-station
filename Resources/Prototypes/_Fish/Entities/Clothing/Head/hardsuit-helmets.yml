@@ -69,7 +69,7 @@
   parent: ClothingHeadHelmetHardsuitSecurityRed
   id: FishClothingHeadHelmetHardsuitCentcomBlack
   categories: [ HideSpawnMenu, DoNotMap ]
-  name: field officer hardsuit helmet
+  name: field hardsuit helmet
   description: Designed for an elite special operations officer.
   suffix: Fish
   components:

@@ -6,6 +6,6 @@ ent-ClothingHeadHelmetHardsuitDeathsquadFish = { ent-ClothingHeadHelmetHardsuitD
     .desc = { ent-ClothingHeadHelmetHardsuitDeathsquad.desc }
     .suffix = Fish
 
-ent-FishClothingHeadHelmetHardsuitCentcomBlack = шлем скафандра Полевого Офицера
+ent-FishClothingHeadHelmetHardsuitCentcomBlack = полевой шлем скафандра
     .desc = Предназначен для элитного офицера специальных операций.
     .suffix = Fish
