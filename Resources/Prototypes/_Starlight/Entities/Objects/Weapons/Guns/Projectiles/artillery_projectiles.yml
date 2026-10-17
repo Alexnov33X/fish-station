@@ -265,7 +265,7 @@
     follow: true
     location: 240mm Cluster Payload
 
-# Fish edit start - Добавление self-explode для 240мм фугасного снаряда
+# Fish edit start - Добавление self-explode для 240мм фугасного снаряда по аналогии с разрывом поврежденного снаряда
 - type: entity
   id: BulletLeviathan240mmHESelfExplode
   name: 240mm HE shell
@@ -276,19 +276,28 @@
     layers:
       - state: blast240mm
     scale: 1.2, 1.2
+  - type: Transform
+    anchored: false
   - type: TriggerOnSpawn
-    keyOut: trigger
+  - type: TimerTrigger
+    delay: 0
+    keyOut: timer
   - type: ExplodeOnTrigger
     keysIn:
-    - trigger
+    - timer
   - type: Explosive
     explosionType: Default
     totalIntensity: 900
     intensitySlope: 5
     maxIntensity: 50
     canCreateVacuum: true
+  - type: PointLight
+    enabled: true
+    radius: 6
+    energy: 5
+    color: "#ff4400"
   - type: TimedDespawn
-    lifetime: 0.25
+    lifetime: 0.5
 # Fish edit end
 
 - type: entity
