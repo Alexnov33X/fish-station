@@ -35,12 +35,29 @@
 
 # --- Back ---
 - type: loadout
-  id: SpecOpsModsuitERTLeader
+  id: SpecOpsBackpackCentcomBlackFish
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOpsOnly
+  equipment:
+    back: FishClothingBackpackCentcomBlack
+
+# --- Outer Clothing ---
+- type: loadout
+  id: FishSpecOpsArmor
   effects:
   - !type:GroupLoadoutEffect
     proto: SpecOps10h
   equipment:
-    back: ClothingModsuitERTLeader
+    outerClothing: FishClothingOuterArmorSpecOps
+
+- type: loadout
+  id: FishSpecOpsCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOps10h
+  equipment:
+    outerClothing: FishClothingOuterCoatSpecOps
 
 # --- Eyes ---
 - type: loadout

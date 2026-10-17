@@ -102,7 +102,15 @@
   id: SpecOpsBackFish
   name: loadout-group-centcomm-back
   loadouts:
-  - SpecOpsModsuitERTLeader
+  - SpecOpsBackpackCentcomBlackFish
+
+- type: loadoutGroup
+  id: SpecOpsOuterClothingFish
+  name: loadout-group-outer-clothing
+  minLimit: 0
+  loadouts:
+  - FishSpecOpsArmor
+  - FishSpecOpsCoat
 
 - type: loadoutGroup
   id: CentCommOperatorEyesFish
