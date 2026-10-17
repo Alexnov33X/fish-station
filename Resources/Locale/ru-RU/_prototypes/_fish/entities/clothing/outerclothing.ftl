@@ -9,3 +9,7 @@ ent-ClothingOuterHardsuitDeathsquadFish = { ent-ClothingOuterHardsuitDeathsquad 
 ent-ClothingOuterRobesSectoralJudgeFish = Мантия Секторального Суда
     .desc = Мантия Секторального Суда. Она придаёт огромный авторитет своему владельцу.
     .suffix = Fish
+
+ent-FishClothingOuterArmorSpecOps = Полевая броня ОСО
+    .desc = Полевая броня офицера специальных операций, чтобы обеспечить его сохранность в чрезвычайных проишествиях.
+    .suffix = Fish
