@@ -130,8 +130,8 @@
   id: FishSpecOpsWeapons
   name: loadout-group-centcomm-weapons
   loadouts:
+  - FishSpecOpsWeaponPistolM1984
   - FishSpecOpsWeaponPistolDeagle
   - FishSpecOpsWeaponPistolDeagleGolden
-  - FishSpecOpsWeaponPistolM1984
 
 
