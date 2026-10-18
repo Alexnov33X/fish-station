@@ -24,6 +24,15 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCentcomOfficerBlack
 
+- type: loadoutEffectGroup
+  id: FishSpecOps100h
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSpecOpsOfficer
+      time: 100h
+
 # --- Weapons ---
 - type: loadout
   id: FishSpecOpsWeaponPistolDeagle
@@ -32,6 +41,22 @@
     proto: FishSpecOps10h
   equipment:
     pocket1: WeaponPistolDeagle
+
+- type: loadout
+  id: FishSpecOpsWeaponPistolDeagleGolden
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FishSpecOps100h
+  equipment:
+    pocket1: WeaponPistolDeagleGolden
+
+- type: loadout
+  id: FishSpecOpsWeaponPistolM1984
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecOpsOnly
+  equipment:
+    pocket1: WeaponPistolM1984
 
 # --- Back ---
 - type: loadout
@@ -55,7 +80,7 @@
   id: FishSpecOpsCoat
   effects:
   - !type:GroupLoadoutEffect
-    proto: FishSpecOps10h
+    proto: SpecOpsOnly
   equipment:
     outerClothing: FishClothingOuterCoatSpecOps
 
