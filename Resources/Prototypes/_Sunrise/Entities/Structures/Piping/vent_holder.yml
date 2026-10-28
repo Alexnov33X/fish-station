@@ -10,3 +10,4 @@
       VentCrawHolderComponent: !type:Container
   - type: Physics
     bodyType: KinematicController
+    canCollide: false
