@@ -21,6 +21,9 @@ public sealed partial class FireVisualizerSystem : VisualizerSystem<FireVisualsC
         base.Initialize();
 
         SubscribeLocalEvent<FireVisualsComponent, ComponentInit>(OnComponentInit);
+        // Fish-start: обновляем огонь и спавним LightEntity только после инициализации родительской сущности, чтобы не падать при появлении горящей сущности в PVS
+        SubscribeLocalEvent<FireVisualsComponent, ComponentStartup>(OnComponentStartup);
+        // Fish-end
         SubscribeLocalEvent<FireVisualsComponent, ComponentShutdown>(OnShutdown);
     }
 
@@ -52,8 +55,18 @@ public sealed partial class FireVisualizerSystem : VisualizerSystem<FireVisualsC
         if (component.Sprite != null)
             SpriteSystem.LayerSetRsi((uid, sprite), FireVisualLayers.Fire, new ResPath(component.Sprite));
 
+        // Fish-start: не вызываем UpdateAppearance до завершения инициализации всех компонентов сущности
+        // UpdateAppearance(uid, component, sprite, appearance);
+    }
+
+    private void OnComponentStartup(EntityUid uid, FireVisualsComponent component, ComponentStartup args)
+    {
+        if (!TryComp<SpriteComponent>(uid, out var sprite) || !TryComp(uid, out AppearanceComponent? appearance))
+            return;
+
         UpdateAppearance(uid, component, sprite, appearance);
     }
+    // Fish-end
 
     protected override void OnAppearanceChange(EntityUid uid, FireVisualsComponent component, ref AppearanceChangeEvent args)
     {
@@ -97,6 +110,10 @@ public sealed partial class FireVisualizerSystem : VisualizerSystem<FireVisualsC
             component.CurrentDisplacement = fireDisplacement;
         }
 
+        // Fish-start: не спавним LightEntity, пока родитель ещё не прошёл стадию Initialized (например, при AppearanceChange во время Init)
+        if (MetaData(uid).EntityLifeStage < EntityLifeStage.Initialized)
+            return;
+        // Fish-end
         component.LightEntity ??= Spawn(null, new EntityCoordinates(uid, default));
         var light = EnsureComp<PointLightComponent>(component.LightEntity.Value);
 

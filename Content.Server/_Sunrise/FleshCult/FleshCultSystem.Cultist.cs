@@ -176,7 +176,10 @@ public sealed partial class FleshCultSystem
         var storeComp = EnsureComp<StoreComponent>(uid);
         var collectiveMindComponent = EnsureComp<CollectiveMindComponent>(uid);
         if (!collectiveMindComponent.Minds.Contains(FleshCollectiveMindProto))
+        {
             collectiveMindComponent.Minds.Add(FleshCollectiveMindProto);
+            Dirty(uid, collectiveMindComponent);
+        }
 
         storeComp.Categories.Add("FleshCultistPassiveSkills");
         storeComp.Categories.Add("FleshCultistActiveSkills");
@@ -257,7 +260,10 @@ public sealed partial class FleshCultSystem
     private void RemoveCollectiveMind(EntityUid uid)
     {
         if (TryComp(uid, out CollectiveMindComponent? collectiveMind) && collectiveMind.Minds.Contains(FleshCollectiveMindProto))
+        {
             collectiveMind.Minds.Remove(FleshCollectiveMindProto);
+            Dirty(uid, collectiveMind);
+        }
     }
 
     private void RemoveObjectives(EntityUid uid)

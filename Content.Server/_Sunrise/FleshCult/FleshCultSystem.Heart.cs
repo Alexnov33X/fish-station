@@ -261,23 +261,7 @@ public sealed partial class FleshCultSystem
 
         var xform = Transform(args.Args.Target.Value);
 
-        if (TryComp(args.Args.Target.Value, out ContainerManagerComponent? container))
-        {
-            foreach (var cont in _containerSystem.GetAllContainers(args.Args.Target.Value, container).ToArray())
-            {
-                foreach (var ent in cont.ContainedEntities.ToArray())
-                {
-                    {
-                        if (HasComp<OrganComponent>(ent))
-                        {
-                            continue;
-                        }
-                        _containerSystem.Remove(ent, cont, force: true);
-                        Transform(ent).Coordinates = xform.Coordinates;
-                    }
-                }
-            }
-        }
+        DropTargetContainerEntities(args.Args.Target.Value, xform.Coordinates); // Fish-edit: не выбрасываем экшены, растворы и прочие служебные сущности
 
         // SUNRISE-TODO: Убрать конечности хирургией а тело заменить на скелета
         if (TryComp<HumanoidProfileComponent>(args.Args.Target.Value, out var HuAppComponent))

@@ -14,6 +14,7 @@ namespace Content.Client.Chat
             base.Initialize();
             SubscribeLocalEvent<CollectiveMindComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<CollectiveMindComponent, ComponentRemove>(OnRemove);
+            SubscribeLocalEvent<CollectiveMindComponent, AfterAutoHandleStateEvent>(OnHandleState); // Fish-edit: обновляем права чата при синхронизации списка коллективных разумов
         }
 
         public CollectiveMindComponent? Player => CompOrNull<CollectiveMindComponent>(_playerManager.LocalSession?.AttachedEntity);
@@ -28,5 +29,12 @@ namespace Content.Client.Chat
         {
             _chatManager.UpdatePermissions();
         }
+
+        // Fish-start: обновление прав чата при изменении состояния CollectiveMindComponent
+        private void OnHandleState(EntityUid uid, CollectiveMindComponent component, ref AfterAutoHandleStateEvent args)
+        {
+            _chatManager.UpdatePermissions();
+        }
+        // Fish-end
     }
 }

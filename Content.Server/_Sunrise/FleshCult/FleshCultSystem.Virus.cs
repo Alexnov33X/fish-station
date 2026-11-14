@@ -7,7 +7,6 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
-using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
@@ -54,12 +53,15 @@ public sealed partial class FleshCultSystem
         if (!TryComp<MobStateComponent>(ent, out var mobState) || mobState.CurrentState == MobState.Dead)
             return false;
 
+        // Fish-start: Проверяем наличие активного щита разума через статус-компонент на сущности
+        _mindShield.GetMindshieldStatus(ent, out var isMindshielded, out _);
         if (HasComp<PendingFleshCultistComponent>(ent) ||
-            HasComp<MindShieldComponent>(ent) ||
+            isMindshielded ||
             _tagSystem.HasTag(ent, FleshTag))
         {
             return false;
         }
+        // Fish-end
 
         if (!_solutionContainerSystem.TryGetSolution(ent.Owner, ent.Comp.BloodSolutionName, out var bloodSolution) ||
             bloodSolution.Value.Owner != solution.Owner)
@@ -124,11 +126,14 @@ public sealed partial class FleshCultSystem
                 case PendingFleshCultistStage.Third:
                 {
                     if (!HasComp<MindContainerComponent>(uid) || !TryComp<ActorComponent>(uid, out var targetActor))
-                        return;
+                        continue; // Fish-edit: не прерываем цикл для остальных заражённых
 
                     var targetPlayer = targetActor.PlayerSession;
 
-                    if (HasComp<MindShieldComponent>(uid))
+                    // Fish-start: Проверяем реальный имплант защиты разума через статус-компонент на сущности
+                    _mindShield.GetMindshieldStatus(uid, out var isMindshielded, out _);
+                    if (isMindshielded)
+                    // Fish-end
                     {
                         // SUNRISE-TODO: Сделать это внутри системы майншилда
                         _popup.PopupEntity("Активация самоуничтожения импланта защиты разума", uid, PopupType.LargeCaution);

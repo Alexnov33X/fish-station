@@ -11,6 +11,7 @@ using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager; // Fish-edit
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Cuffs.Components;
@@ -21,11 +22,13 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Implants.Components; // Fish-edit
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.StatusEffectNew.Components; // Fish-edit
 using Content.Shared.Store;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio;
@@ -237,28 +240,7 @@ public sealed partial class FleshCultSystem
 
         if (TryComp<HumanoidProfileComponent>(args.Args.Target, out var HuAppComponent))
         {
-            if (TryComp(args.Args.Target.Value, out ContainerManagerComponent? container))
-            {
-                foreach (var cont in _containerSystem.GetAllContainers(args.Args.Target.Value, container).ToArray())
-                {
-                    // Fish-start: Не выбрасывать служебный контейнер экшенов
-                    if (cont.ID == ActionsContainerComponent.ContainerId)
-                        continue;
-                    // Fish-end
-
-                    foreach (var ent in cont.ContainedEntities.ToArray())
-                    {
-                        // Fish-start: Не выбрасывать органы и действия наружу
-                        if (HasComp<OrganComponent>(ent) || HasComp<ActionComponent>(ent))
-                        {
-                            continue;
-                        }
-                        // Fish-end
-                        _containerSystem.Remove(ent, cont, force: true);
-                        Transform(ent).Coordinates = coordinates;
-                    }
-                }
-            }
+            DropTargetContainerEntities(args.Args.Target.Value, coordinates); // Fish-edit
 
             // SUNRISE-TODO: Убрать конечности хирургией а тело заменить на скелета
             if (TryComp<BodyComponent>(args.Args.Target, out var body))
@@ -630,5 +612,38 @@ public sealed partial class FleshCultSystem
         _popup.PopupEntity(Loc.GetString("flesh-cultist-throw-hugger-others", ("Entity", uid)),
             uid, Filter.PvsExcept(uid), true, PopupType.LargeCaution);
     }
+
+    // Fish-start: Общий хелпер выброса экипировки и предметов цели без затрагивания служебных контейнеров
+    private void DropTargetContainerEntities(EntityUid target, EntityCoordinates coordinates)
+    {
+        if (!TryComp(target, out ContainerManagerComponent? container))
+            return;
+
+        foreach (var cont in _containerSystem.GetAllContainers(target, container).ToArray())
+        {
+            if (cont.ID == ActionsContainerComponent.ContainerId ||
+                cont.ID == SolutionManagerComponent.DefaultContainerId ||
+                cont.ID == StatusEffectContainerComponent.ContainerId ||
+                cont.ID == ImplanterComponent.ImplantSlotId)
+            {
+                continue;
+            }
+
+            foreach (var ent in cont.ContainedEntities.ToArray())
+            {
+                if (HasComp<OrganComponent>(ent) ||
+                    HasComp<ActionComponent>(ent) ||
+                    HasComp<SolutionComponent>(ent) ||
+                    HasComp<SubdermalImplantComponent>(ent))
+                {
+                    continue;
+                }
+
+                _containerSystem.Remove(ent, cont, force: true);
+                Transform(ent).Coordinates = coordinates;
+            }
+        }
+    }
+    // Fish-end
 
 }
